@@ -13,7 +13,7 @@
     <title>Accueil</title>
 </head>
 <body class="container">
-    <h1>Bienvenue sur le site du Demineur en Ligne !</h1>
+    <h1>Bienvenue sur le site du Demineur en ligne le meilleur du monde !</h1>
     <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
     <!-- Affichage du message d'erreur -->
     <!-- Code saisit invalide | pseudo deja empreinter | -->
