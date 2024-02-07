@@ -32,6 +32,7 @@
         <button class="btn btn-warning" type="reset" id="btnJoin">Rejoindre</button>
     </div>
     <div class="">
+        <label id="test"></label>
     </div>
 </body>
 </html>
