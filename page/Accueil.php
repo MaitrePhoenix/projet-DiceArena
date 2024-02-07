@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container">
-    <h1><center>Bienvenue sur le site du Demineur en ligne !</center></h1>
+    <h1><center>Bienvenue sur le site DiceArena !</center></h1>
     <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
     <!-- Affichage du message d'erreur -->
     <!-- Code saisit invalide | pseudo deja empreinter | -->

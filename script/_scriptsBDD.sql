@@ -4,7 +4,7 @@ drop table if exists partie;
 drop table if exists joueur;
 
 create table partie(
-    code  varchar(50) primary key,
+    code  INT primary key AUTO_INCREMENT,
     plateauj1 varchar(50),
     plateauj2 varchar(50),
     tourJoueur int,
@@ -14,7 +14,7 @@ create table partie(
 );
 
 create table joueur(
-    id int primary key,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     pseudo varchar(25) not null,
     mdp varchar(25) not null
 );
