@@ -30,8 +30,6 @@
         <label for="inJoiner">Pseudo joueur 2 : </label>
         <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="Veuilliez saisir le code de la partie">
         <button class="btn btn-warning" type="reset" id="btnJoin">Rejoindre</button>
-        <h3>Un lien pour déclencher un script JavaScript</h3>
-        <a href="javascript:alert('Le code a bien été générer');">Generation</a>
     </div>
     
 </body>
