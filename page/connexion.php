@@ -4,8 +4,8 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Connexion DiceArena</title>
-	<link rel="stylesheet" href="css/style.css">
+	<title>Connexion Dice-Arena</title>
+	<link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
