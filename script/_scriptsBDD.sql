@@ -5,12 +5,16 @@ drop table if exists joueur;
 
 create table partie(
     code  varchar(50) primary key,
-    plateau varchar(10000) not null
+    plateauj1 varchar(50),
+    plateauj2 varchar(50),
+    tourJoueur int,
+    lastDice int,
+    joueur1 int not null references joueur(id),
+    joueur2 int references joueur(id)
 );
 
 create table joueur(
-    id varchar(50) primary key,
+    id int primary key,
     pseudo varchar(25) not null,
-    score int default(0),
-    partie varchar(50) references partie(code)
+    mdp varchar(25) not null
 );
