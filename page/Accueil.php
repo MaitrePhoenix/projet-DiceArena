@@ -31,6 +31,7 @@
         <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="Veuilliez saisir le code de la partie">
         <button class="btn btn-warning" type="reset" id="btnJoin">Rejoindre</button>
     </div>
-    
+    <div class="">
+    </div>
 </body>
 </html>
