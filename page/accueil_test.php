@@ -11,6 +11,7 @@
 
 <body>
     <!-- Navbar-->
+    <?php echo password_hash("ZeBoss",PASSWORD_DEFAULT); ?>
     <nav class="navbar navbar-expand-md navbar-light" 
          style="background-color: blueviolet;">
     <a href="#"><i class="fas fa-anchor text-warning fa-2x"></i></a>
