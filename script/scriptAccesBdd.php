@@ -1,6 +1,6 @@
 <?php
 
-$cnx="salut";
+$cnx=null;
 try{
     //Ne pas taper le port de l'hote 127.0.0.0
     //git ignor
@@ -9,10 +9,10 @@ try{
     echo $e->getMessage();
 }
 
-function getJoueurById($id, $cnx){
-    $sql = "SELECT * FROM joueur";
-    foreach ($cnx->query($sql) as $row) {
-        print $row['id'] . "\t";
-        print $row['login'] . "\t";
-    }
+function getJoueurById($id){
+    global $cnx;
+    $stmt = $dbh->prepare("Select id, pseudo");
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':value', $value);
+
 }

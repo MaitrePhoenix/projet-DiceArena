@@ -35,14 +35,14 @@
 
 
     // on passe par des variables plus rapides � �crire...
-    $login = $_REQUEST['login'];
-    $pass  = $_REQUEST['pass'];
+    $login = $_REQUEST['pseudo'];
+    $pass  = $_REQUEST['mdp'];
 
     var_dump($_REQUEST);
 
-    $text_request = "SELECT login, pass ";
+    $text_request = "SELECT pseudo, mdp ";
     $text_request.= "FROM joueur ";
-    $text_request.= "WHERE login=:log;";
+    $text_request.= "WHERE pseudo=:log;";
 
     $requete = $cnx->prepare($text_request);
     $requete ->bindParam(":log",$login);
@@ -66,14 +66,14 @@
     //Si on arrive ici c'est que le login existe
 
     //$droits = $tabRes[0]["droits"];
-    $passHash = $tabRes[0]["pass"];
+    $passHash = $tabRes[0]["mdp"];
     //Est ce que le pass est correct ?
     if(password_verify($pass,$passHash)==false){
         die("Erreur L71");
     }
 
     //Placer en session : le login et les droits
-    $_SESSION["login"] = $login;
+    $_SESSION["pseudo"] = $login;
     //$_SESSION["droits"] = $droits;
 
     // if ($droits=="admin"){
