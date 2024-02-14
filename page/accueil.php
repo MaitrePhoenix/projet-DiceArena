@@ -10,7 +10,7 @@
     // exit;
 
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
-include('includes/inc_headers.php');
+//include('../includes/inc_headers.php');
 
 //if(!empty($_GET["msg"]))
 //$msg=""

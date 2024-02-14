@@ -9,8 +9,9 @@
 </head>
 
 <body class="body-center">
-    <!-- J'ai gerer -->
+    <!-- Je suis occupé de gerer -->
 	<div class="container form-btn form-btn-hv" style="margin-right:30px;">
+		
 		<form id="login-form" action="../traitement/traiterIdentification.php" method="post">
 			<h2>Connexion</h2>
 			<div>
