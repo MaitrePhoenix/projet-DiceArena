@@ -20,7 +20,7 @@ create table joueur(
 );
 
 -- INSERTION DES DONNEES (pour les test en dev tant que la partie creation ne fonctionne pas)
-insert into joueur  (login, pass,id) 
+insert into joueur  (pseudo, mdp,id) 
    values ('mael',  'ZeBoss',1),
           ('max',   'li3-mil',2);
 

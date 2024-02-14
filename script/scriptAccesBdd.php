@@ -11,8 +11,7 @@ try{
 
 function getJoueurById($id){
     global $cnx;
-    $stmt = $dbh->prepare("Select id, pseudo");
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':value', $value);
-
+    $stmt = $cnx->prepare("Select * from joueur where id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
 }
