@@ -10,7 +10,7 @@
     // exit;
 
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
-include('includes/inc_headers.php');
+//include('includes/inc_headers.php');
 
 //if(!empty($_GET["msg"]))
 //$msg=""
@@ -32,6 +32,9 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
 
 <body style="background-color: #f2f2f2">
     <div >
+        <?php 
+        include "../script/scriptAccesBdd.php"; 
+        getJoueurById(0, $cnx);?>
         <h1><center>Bienvenue sur le site DiceArena !</center></h1>
         <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
         <!-- Affichage du message d'erreur -->
