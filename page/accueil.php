@@ -34,7 +34,7 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
     <div >
         <?php 
         include "../script/scriptAccesBdd.php"; 
-        getJoueurById(0);?>
+        print_r(getPartieByCode(1));?>
         <h1><center>Bienvenue sur le site DiceArena !</center></h1>
         <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
         <!-- Affichage du message d'erreur -->
