@@ -1,4 +1,15 @@
 <?php
+session_start(); // "premiere instruction; pas de texte, ; entete de communication"
+
+// il faut etre connecter
+
+// Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
+include('includes/inc_headers.php');
+
+// Récupérer les informations depuis les paramètres d'URL
+$loginUtilisateur = $_SESSION["login"];
+//$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
+
 // Récupérer le code unique depuis l'URL
 $code_unique = isset($_GET['code']) ? $_GET['code'] : '';
 

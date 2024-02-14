@@ -15,6 +15,16 @@ create table partie(
 
 create table joueur(
     id INT PRIMARY KEY AUTO_INCREMENT,
-    pseudo varchar(25) not null,
-    mdp varchar(25) not null
+    login varchar(25) not null,
+    pass varchar(25) not null
 );
+
+-- INSERTION DES DONNEES (pour les test en dev tant que la partie creation ne fonctionne pas)
+insert into joueur  (login, pass,id) 
+   values ('mael',  'ZeBoss',1),
+          ('max',   'li3-mil',2);
+
+insert into partie (code, joueur1, joueur2)
+    values ('1', 1, 2),
+           ('2', 1, null );
+

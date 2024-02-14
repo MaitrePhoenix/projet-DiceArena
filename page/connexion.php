@@ -4,25 +4,31 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Connexion Dice-Arena</title>
+	<title>Connexion Dice Arena</title>
 	<link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body>
-	<div class="container">
-		<form id="login-form" action="login.php" method="post">
+<body class="body-center">
+    <!-- J'ai gerer -->
+	<div class="container form-btn form-btn-hv" style="margin-right:30px;">
+		<form id="login-form" action="../traitement/traiterIdentification.php" method="post">
 			<h2>Connexion</h2>
 			<div>
-				<label for="pseudo">Pseudo :</label>
-				<input type="text" id="pseudo" name="pseudo" required>
+				<label for="inLogin">Pseudo :</label>
+				<input id="inLogin" name="login" type="text" placeholder="Identifiant" required>
 			</div>
 			<div>
-				<label for="password">Mot de passe :</label>
-				<input type="password" id="password" name="password" required>
+				<label for="inPass">Mot de passe :</label>
+				<input id="inPass" name="pass" type="password" placeholder="Secret" tooltip="attention" required>
 			</div>
 			<button type="submit">Se connecter</button>
+			<button class="btn btn-warning" type="reset">Effacer</button>
 		</form>
+		
+	</div>
 
+	<!-- A faire -->
+	<div class="container form-btn form-btn-hv">
 		<form id="signup-form" action="signup.php" method="post">
 			<h2>Créer un compte</h2>
 			<div>
@@ -34,8 +40,13 @@
 				<input type="password" id="new-password" name="new-password" required>
 			</div>
 			<button type="submit">Créer un compte</button>
+			
 		</form>
+		<button class="btn btn-warning" type="reset">Effacer</button>
 	</div>
+	
+
+	
 </body>
 
 </html>
