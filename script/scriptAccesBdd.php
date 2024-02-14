@@ -11,8 +11,18 @@ try{
 
 function getJoueurById($id){
     global $connexion;
-    $requete = $connexion->prepare("Select * from joueur where id = :id");
+    $requete = $connexion->prepare("Select id, pseudo from joueur where id = :id");
     $requete->bindParam(':id', $id);
+    $requete->execute();
+    $result = $requete->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function getJoueurForConnexion($pseudo, $mdp){
+    global $connexion;
+    $requete = $connexion->prepare("Select * from joueur where pseudo = :pseudo and mdp = :mdp");
+    $requete->bindParam(':pseudo', $pseudo);
+    $requete->bindParam(':mdp', $mdp);
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
@@ -35,23 +45,24 @@ function createJoueur($pseudo, $mdp){
     $requete->execute();
 }
 
-function createPartie($plateauj1, $plateauj2, $tourJoueur, $joueur1){
+function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $joueur1){
     global $connexion;
-    $requete = $connexion->prepare("Insert into partie (plateauj1, plateauj2, tourJoueur, joueur1) values (:plateauj1, :plateauj2, :tourJoueur, :joueur1)");
-    $requete->bindParam(':plateauj1', $plateauj1);
-    $requete->bindParam(':plateauj2', $plateauj2);
+    $requete = $connexion->prepare("Insert into partie (plateauJ1, plateauJ2, tourJoueur, joueur1) values (:plateauJ1, :plateauJ2, :tourJoueur, :joueur1)");
+    $requete->bindParam(':plateauJ1', $plateauJ1);
+    $requete->bindParam(':plateauJ2', $plateauJ2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
     $requete->bindParam(':joueur1', $joueur1);
     $requete->execute();
 }
 
-function updatePartie($code, $plateauj1, $plateauj2, $tourJoueur, $lastDice, $joueur2){
+function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur2){
     global $connexion;
-    $requete = $connexion->prepare("Update partie set plateauj1 = :plateauj1, plateauj2 = :plateauj2, tourJoueur = :tourJoueur, lastDice = :lastDice, joueur2 = :joueur2 where code = :code");
+    $requete = $connexion->prepare("Update partie set plateauJ1 = :plateauJ1, plateauJ2 = :plateauJ2, tourJoueur = :tourJoueur, currentDice = :currentDice, joueur2 = :joueur2 where code = :code");
     $requete->bindParam(':code', $code);
-    $requete->bindParam(':plateauj1', $plateauj1);
-    $requete->bindParam(':plateauj2', $plateauj2);
+    $requete->bindParam(':plateauJ1', $plateauJ1);
+    $requete->bindParam(':plateauJ2', $plateauJ2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
+    $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur2', $joueur2);
     $requete->execute();
 }

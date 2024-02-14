@@ -5,10 +5,10 @@ drop table if exists joueur;
 
 create table partie(
     code  INT primary key AUTO_INCREMENT,
-    plateauj1 varchar(50),
-    plateauj2 varchar(50),
+    plateauJ1 varchar(50),
+    plateauJ2 varchar(50),
     tourJoueur int,
-    lastDice int,
+    currentDice int,
     joueur1 int not null references joueur(id),
     joueur2 int references joueur(id)
 );
