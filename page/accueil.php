@@ -10,7 +10,7 @@
     // exit;
 
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
-//include('includes/inc_headers.php');
+//include('../includes/inc_headers.php');
 
 //if(!empty($_GET["msg"]))
 //$msg=""
@@ -28,6 +28,7 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Accueil</title>
+    <modif>
 </head>
 
 <body style="background-color: #f2f2f2">

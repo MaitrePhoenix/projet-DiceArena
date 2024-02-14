@@ -2,7 +2,7 @@
     //Version Hash
     session_start(); // "premiere instruction; pas de texte, ; entete de communication"
     
-    require_once "includes/inc_connexionBase.php";
+    require_once "../includes/inc_connexionBase.php";
     //----------------------------------------
     // Un peu de tracage des valeurs recues
     //----------------------------------------
