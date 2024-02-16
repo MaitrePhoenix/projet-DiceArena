@@ -45,12 +45,13 @@ function createJoueur($pseudo, $mdp){
     $requete->execute();
 }
 
-function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $joueur1){
+function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur1){
     global $connexion;
-    $requete = $connexion->prepare("Insert into partie (plateauJ1, plateauJ2, tourJoueur, joueur1) values (:plateauJ1, :plateauJ2, :tourJoueur, :joueur1)");
+    $requete = $connexion->prepare("Insert into partie (plateauJ1, plateauJ2, tourJoueur, currentDice, joueur1) values (:plateauJ1, :plateauJ2, :tourJoueur, :currentDice, :joueur1)");
     $requete->bindParam(':plateauJ1', $plateauJ1);
     $requete->bindParam(':plateauJ2', $plateauJ2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
+    $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur1', $joueur1);
     $requete->execute();
 }
@@ -65,4 +66,8 @@ function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, 
     $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur2', $joueur2);
     $requete->execute();
+}
+
+function updatePartie($partie){
+    updatePartie($partie["code"], $partie["plateauJ1"], $partie["plateauJ2"], $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
 }
