@@ -49,7 +49,7 @@
     var_dump($_REQUEST);
 
     // Vérifier si login/pass du formulaire existent dans la table users
-    $texteReq = "select pseudo, mdp ";
+    $texteReq = "select *";
     $texteReq.= "from joueur ";
     $texteReq.= "where pseudo=:log  ";
 
@@ -112,6 +112,7 @@
 
     //Placer en session : le login
     $_SESSION["pseudo"] = $pseudo;
+    $_SESSION['userId'] = $tabRes[0]['id'];
     //$_SESSION["id"] = $id;
 
     // if (empty($pseudo) || empty($mdp)){

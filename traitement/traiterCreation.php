@@ -7,4 +7,6 @@
 
 // A ajouter au fur et à mesure
 
+    session_start(); // "premiere instruction; pas de texte, ; entete de communication"
+    
 ?>

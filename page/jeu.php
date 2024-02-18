@@ -6,6 +6,8 @@ session_start(); // "premiere instruction; pas de texte, ; entete de communicati
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
 include('../includes/inc_headers.php');
 
+require_once "../script/scriptAccesBdd.php";
+
 // Récupérer les informations depuis les paramètres d'URL
 $loginUtilisateur = $_SESSION["pseudo"];
 //$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
@@ -25,6 +27,7 @@ echo "Votre code unique est : $code_unique";
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Jeu</title>
 </head>
 <body>
@@ -38,12 +41,16 @@ echo "Votre code unique est : $code_unique";
             
             <label >
         </div>
-        <div>
-            <label for="inCreator">Joueur 1/2: </label>
-            <input class="form-control" id="inCreator" name="Creator" type="text" placeholder="champ de saisi J1/2">
-            <button class="btn btn-primary" type="submit" id="btnCreate">Valider</button>
-            
-        </div>
+
+        <?php if(shouldIPlay($_SESSION['userId'])) {
+            ?>
+            <div>
+                <label for="inCreator">Joueur 1/2: </label>
+                <input class="form-control" id="inCreator" name="Creator" type="text" placeholder="champ de saisi J1/2">
+                <button class="btn btn-primary" type="submit" id="btnCreate">Valider</button>
+            </div>
+            <?php
+        } ?>
         <div>
             <label for="inJoiner">C'est à moi ? : </label>
             <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
