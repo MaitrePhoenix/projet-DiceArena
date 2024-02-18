@@ -6,5 +6,23 @@
 // - rafraichir la page avec le code generer
 
 // A ajouter au fur et à mesure
+    include_once('traiterJeu.php');
 
+    if(isset($_POST['action']) && !empty($_POST['action'])) {
+        // Exécute la fonction appropriée selon la valeur de l'action
+        if($_POST['action'] == 'maFonction') {
+            maFonction();
+        }
+    }
+
+    function creerEtDirigerVersPartie(){
+        echo "Fonction exécutée avec succès !";
+        alert("test");
+        //$idUtilisateur = $_SESSION["idUser"];
+
+        //$idPartie = creerPartie($idUtilisateur);
+
+        //header("Location: page/jeu_test.php?parametre=$idPartie");
+        //exit();
+    }
 ?>

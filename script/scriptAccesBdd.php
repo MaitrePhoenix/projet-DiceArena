@@ -54,6 +54,10 @@ function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur
     $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur1', $joueur1);
     $requete->execute();
+
+    //retourne l'id de la partie
+    $lastInsertId = $connexion->lastInsertId();
+    return $lastInsertId;
 }
 
 function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur2){
