@@ -21,8 +21,8 @@ create table joueur(
 
 -- INSERTION DES DONNEES (pour les test en dev tant que la partie creation ne fonctionne pas)
 insert into joueur (pseudo, mdp,id) 
-   values ('mael',  'ZeBoss',1),
-          ('max',   'li3-mil',2);
+   values ('mael',  '$2y$10$IkC2R01e3vXxAcKrR82Q8e0E4N1YH.hC9/Z5azjiGXLm32JRfWe/O',1),
+          ('max',   '$2y$10$6l/wqt3rANsHT6chPewrNeNNr4t6cdNEgRfe06jhII2dn2o7NEixG',2);
 
 insert into partie (code, joueur1, joueur2)
     values ('1', 1, 2),

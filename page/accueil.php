@@ -14,7 +14,7 @@
 
 //if(!empty($_GET["msg"]))
 //$msg=""
-$erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations.";
+//$erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations.";
 // Utilisez require si la non-disponibilité de inc_headers.php doit être traitée comme une erreur fatale
 // require('includes/inc_headers.php');
 ?>
@@ -33,9 +33,9 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
 
 <body style="background-color: #f2f2f2">
     <div >
-        <?php 
+        <?php  
         include "../traitement/traiterJeu.php"; 
-        print_r(poserDes(2));?>
+        //print_r(poserDes(2));?>
         <h1><center>Bienvenue sur le site DiceArena !</center></h1>
         <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
         <!-- Affichage du message d'erreur -->
@@ -48,9 +48,9 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
 
             <?php   
             //if msg!=""
-            if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
-                echo '<p style="color: red;"><mark>'. $erreurMessIdent .'</mark></p>';
-            }
+            // if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+            //     echo '<p style="color: red;"><mark>'. $erreurMessIdent .'</mark></p>';
+            // }
             ?>
 
             <!-- <label for="inCreator">Pseudo createur: </label> -->

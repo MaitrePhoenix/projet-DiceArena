@@ -1,3 +1,40 @@
+<?php
+// Démarrer la session si elle n'est pas déjà démarrée
+session_start();
+
+// Vérifier si les informations du joueur et le tour actuel sont disponibles en session
+// $_SESSION['nom_joueur'] = '';
+// $_SESSION['tour_joueur'] = '';
+if(isset($_SESSION['nom_joueur'], $_SESSION['tour_joueur'])) {
+    $nom_joueur = $_SESSION['nom_joueur'];
+    $tour_joueur = $_SESSION['tour_joueur'];
+
+    // Afficher le nom du joueur dont c'est le tour
+    echo "C'est le tour de $nom_joueur.";
+
+    // Afficher le formulaire pour permettre au joueur de jouer
+    if($tour_joueur == 1) {
+        echo "Vous êtes le joueur 1, affichez le formulaire pour le joueur 1.";
+    } else {
+        echo "Vous êtes le joueur 2, affichez le formulaire pour le joueur 2.";
+    }
+
+    // Lorsque le joueur soumet le formulaire, mettez à jour le tour du joueur dans la session
+    // Assurez-vous de passer le tour au prochain joueur
+    // par exemple:
+    // if($tour_joueur == 1) {
+    //     $_SESSION['tour_joueur'] = 2;
+    // } else {
+    //     $_SESSION['tour_joueur'] = 1;
+    // }
+} else {
+    // Si les informations du joueur ou le tour actuel ne sont pas disponibles en session, redirigez vers une page de connexion ou d'accueil par exemple
+    header("Location: connexion.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,7 +48,8 @@
 
 <body>
     <!-- Navbar-->
-    <?php echo password_hash("ZeBoss",PASSWORD_DEFAULT); ?>
+    <!-- ZeBoss li3-mil -->
+    <?php //echo password_hash("li3-mil",PASSWORD_DEFAULT); ?>
     <nav class="navbar navbar-expand-md navbar-light" 
          style="background-color: blueviolet;">
     <a href="#"><i class="fas fa-anchor text-warning fa-2x"></i></a>

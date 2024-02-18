@@ -54,8 +54,19 @@ function poserDes($numColonne){
         }
     }
 
-    $partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
-    $partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
+
+    // Mettre à jour les plateaux dans la variable $partie
+    if($partie["tourJoueur"] == 1){
+        $partie["plateauJ1"] = $plateauPrincipal;
+        $partie["plateauJ2"] = $plateauAdversaire;
+    } else {
+        $partie["plateauJ1"] = $plateauAdversaire;
+        $partie["plateauJ2"] = $plateauPrincipal;
+    }
+
+    //Anciennement
+    //$partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
+    //$partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
 
     changerTour();
 }
@@ -76,14 +87,14 @@ function getScore($plateau){
         for($j = 0; $j < 3; $j++){
             $de = $plateau[$i][$j];
             if($de != 0){
-                if (deDejaVu[0] == $de && deDejaVu[1] == $de){
-                    score += $de*4;
+                if ($deDejaVu[0] == $de && $deDejaVu[1] == $de){
+                    $score += $de*4;
                 }
-                else if (deDejaVu[0] == $de || deDejaVu[1] == $de){
-                    score += $de*2;
+                else if ($deDejaVu[0] == $de || $deDejaVu[1] == $de){
+                    $score += $de*2;
                 }
                 else{
-                    score += $de;
+                    $score += $de;
                 }
             }
         }

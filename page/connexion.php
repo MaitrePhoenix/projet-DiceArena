@@ -1,26 +1,54 @@
+<?php
+    // definir les sessions
+    // partie chiffrement
+
+    // Générer un code unique
+    //$code_unique = uniqid();
+
+    // Redirection vers la page avec le code unique dans l'URL
+    // header("Location: jeu.php?code=$code_unique");
+    // exit;
+
+// Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
+//include('../includes/inc_headers.php');
+
+//if(!empty($_GET["msg"]))
+//$msg=""
+$erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations.";
+// Utilisez require si la non-disponibilité de inc_headers.php doit être traitée comme une erreur fatale
+// require('includes/inc_headers.php');
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <html>
 
 <head>
 	<meta charset="UTF-8">
-	<title>Connexion Dice Arena</title>
 	<link rel="stylesheet" href="../css/styles.css">
+	<title>Connexion Dice Arena</title>
 </head>
 
 <body class="body-center">
     <!-- Je suis occupé de gerer -->
 	<div class="container form-btn form-btn-hv" style="margin-right:30px;">
 		
+		
 		<form id="login-form" action="../traitement/traiterIdentification.php" method="post">
+		<?php   
+            //if msg!=""
+            if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+                echo '<p style="color: red;"><mark>'. $erreurMessIdent .'</mark></p>';
+            }
+        ?>
 			<h2>Connexion</h2>
 			<div>
-				<label for="inLogin">Pseudo :</label>
-				<input id="inLogin" name="login" type="text" placeholder="Identifiant" required>
+				<label for="inPseudo">Pseudo :</label>
+				<input id="inPseudo" name="pseudo" type="text" placeholder="Identifiant" required>
 			</div>
 			<div>
-				<label for="inPass">Mot de passe :</label>
-				<input id="inPass" name="pass" type="password" placeholder="Secret" tooltip="attention" required>
+				<label for="inMdp">Mot de passe :</label>
+				<input id="inMdp" name="mdp" type="password" placeholder="Secret" tooltip="attention" required>
 			</div>
 			<button type="submit">Se connecter</button>
 			<button class="btn btn-warning" type="reset">Effacer</button>
