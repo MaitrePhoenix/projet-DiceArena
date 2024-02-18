@@ -24,7 +24,9 @@ function creerPartie($joueur1){
     $tourJoueur = rand(1,2);
     $currentDice = rand(1,6);
     $joueur2 = 0;
-    createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur1);
+
+    //crée la partie et en retourne l'id
+    return createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur1);
 }
 
 
