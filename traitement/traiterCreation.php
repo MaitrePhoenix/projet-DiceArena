@@ -16,13 +16,10 @@
     }
 
     function creerEtDirigerVersPartie(){
-        echo "Fonction exécutée avec succès !";
-        alert("test");
-        //$idUtilisateur = $_SESSION["idUser"];
+        $idUtilisateur = $_SESSION["idUser"];
 
-        //$idPartie = creerPartie($idUtilisateur);
+        $idPartie = creerPartie($idUtilisateur);
 
-        //header("Location: page/jeu_test.php?parametre=$idPartie");
-        //exit();
+        //ajouter la redirection automatique
     }
 ?>
