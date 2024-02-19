@@ -15,7 +15,7 @@ $loginUtilisateur = $_SESSION["pseudo"];
 // Récupérer le code unique //depuis l'URL
 // creerPartie();
 //$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
-$code_unique = null;//$_SESSION['code'];
+$code_unique = $_SESSION['code'];
 //$_SESSION['code'] = $code_unique;
 
 echo "Joueur en ligne : $loginUtilisateur<br>";
@@ -46,7 +46,7 @@ echo "Votre code unique est : $code_unique";
             <label >
         </div>
 
-        <?php if(shouldIPlay($_SESSION['userId'])) {  ?>
+        <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
             <div>
                 <label for="inCreator">Joueur 1/2: </label>
                 <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
