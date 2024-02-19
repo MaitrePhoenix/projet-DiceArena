@@ -48,7 +48,10 @@
     function rejoindrePartie($code){
         $partie = getPartieByCode($code);
         if($partie == null){
-            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');</script>";
+            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');</script>";  
+            header("location: ../page/accueil.php");
+            
+            
         }
         else if ($partie["joueur1"] == $_SESSION["userId"] || $partie["joueur2"] == $_SESSION["userId"] || $partie["joueur2"] == null){
             var_dump($code);

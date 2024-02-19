@@ -57,9 +57,12 @@ function createJoueur($pseudo, $mdp){
 
 function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur1){
     global $connexion;
+
+    $plateau1 = json_encode($plateauJ1);
+    $plateau2 = json_encode($plateauJ2);
     $requete = $connexion->prepare("Insert into partie (plateauJ1, plateauJ2, tourJoueur, currentDice, joueur1) values (:plateauJ1, :plateauJ2, :tourJoueur, :currentDice, :joueur1)");
-    $requete->bindParam(':plateauJ1', json_encode($plateauJ1));
-    $requete->bindParam(':plateauJ2', json_encode($plateauJ2));
+    $requete->bindParam(':plateauJ1',$plateau1 );
+    $requete->bindParam(':plateauJ2', $plateau2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
     $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur1', $joueur1);
@@ -72,10 +75,13 @@ function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur
 
 function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur2){
     global $connexion;
+
+    $plateau1 = json_encode($plateauJ1);
+    $plateau2 = json_encode($plateauJ2);
     $requete = $connexion->prepare("Update partie set plateauJ1 = :plateauJ1, plateauJ2 = :plateauJ2, tourJoueur = :tourJoueur, currentDice = :currentDice, joueur2 = :joueur2 where code = :code");
     $requete->bindParam(':code', $code);
-    $requete->bindParam(':plateauJ1', json_encode($plateauJ1));
-    $requete->bindParam(':plateauJ2', json_encode($plateauJ2));
+    $requete->bindParam(':plateauJ1', $plateau1 );
+    $requete->bindParam(':plateauJ2', $plateau2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
     $requete->bindParam(':currentDice', $currentDice);
     $requete->bindParam(':joueur2', $joueur2);
