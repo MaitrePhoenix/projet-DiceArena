@@ -27,7 +27,7 @@ function getJoueurForConnexion($pseudo, $mdp){
     $requete->bindParam(':mdp', $mdp);
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
-    return $result;
+    return $result.id;
 
     var_dump('Le result est'.$result);
     //exit();
@@ -41,8 +41,8 @@ function getPartieByCode($code){
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
 
-    var_dump($result);
-    exit();
+    //var_dump($result);
+    //exit();
 }
 
 function createJoueur($pseudo, $mdp){
