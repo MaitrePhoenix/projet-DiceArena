@@ -63,6 +63,7 @@
     var_dump($requete);
 
     $tabRes = $requete->fetchAll(PDO::FETCH_ASSOC);
+    
 
     //$tabRes = getJoueurForConnexion($pseudo, $mdp);
     
@@ -70,9 +71,14 @@
     var_dump($tabRes);
     //exit();
 
+    // getJoueurForConnexion($pseudo)
+
+
+
+
     if (count($tabRes)!=1) {
         // redirection
-        header("location:connexion.php");
+        header("location: ../page/connexion.php");
         die("erreur : login non trouvé ");
     }
 
@@ -107,7 +113,7 @@
         //header("location: ../page/connexion.php?erreur=1");
         die("Erreur LLLL");
     }else{
-        header("location: ../page/jeu.php");
+        header("location: ../page/accueil.php");
     }
 
     //Placer en session : le login

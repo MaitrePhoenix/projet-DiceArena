@@ -13,8 +13,10 @@ $loginUtilisateur = $_SESSION["pseudo"];
 //$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
 
 // Récupérer le code unique depuis l'URL
-$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
+//$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
+$code_unique = $_SESSION['code'];
 
+echo "Joueur en ligne : $loginUtilisateur";
 // Afficher le code unique
 echo "Votre code unique est : $code_unique";
 ?>
@@ -42,19 +44,18 @@ echo "Votre code unique est : $code_unique";
             <label >
         </div>
 
-        <?php if(shouldIPlay($_SESSION['userId'])) {
-            ?>
+        <?php if(shouldIPlay($_SESSION['userId'])) {  ?>
             <div>
                 <label for="inCreator">Joueur 1/2: </label>
-                <input class="form-control" id="inCreator" name="Creator" type="text" placeholder="champ de saisi J1/2">
+                <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
                 <button class="btn btn-primary" type="submit" id="btnCreate">Valider</button>
             </div>
-            <?php
-        } ?>
+        <?php } ?>
+
         <div>
-            <label for="inJoiner">C'est à moi ? : </label>
+            <label for="inDemande">C'est à moi ? : </label>
             <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-            <button class="btn btn-warning" type="reset" id="btnJoin" action>Prendre la main</button>
+            <button class="btn btn-warning" type="reset" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
         </div>
         <div style="margin-top: 10px;">
             <label id="rappelValue">Rappel des valeurs : </label>
@@ -63,6 +64,28 @@ echo "Votre code unique est : $code_unique";
         <div>
             <!-- Partie log -->
         </div>
+
+
+                <!-- Pour le debug -->
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil.php';" value="Accueil" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu_test.php';" value="Jeu_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/connexion.php';" value="Connexion" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
+                </div>
+
+
     </div>
 </body>
 </html>

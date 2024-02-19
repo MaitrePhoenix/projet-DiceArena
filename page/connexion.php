@@ -58,24 +58,45 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
 
 	<!-- A faire -->
 	<div class="container form-btn form-btn-hv">
-		<form id="signup-form" action="signup.php" method="post">
+		<form id="signup-form" action="../traitement/traiterCreation_joueur.php" method="post">
 			<h2>Créer un compte</h2>
 			<div>
 				<label for="new-pseudo">Nouveau pseudo :</label>
 				<input type="text" id="new-pseudo" name="new-pseudo" required>
 			</div>
 			<div>
-				<label for="new-password">Nouveau mot de passe :</label>
-				<input type="password" id="new-password" name="new-password" required>
+				<label for="new-mdp">Nouveau mot de passe :</label>
+				<input type="password" id="new-mdp" name="new-mdp" required>
 			</div>
 			<button type="submit">Créer un compte</button>
 			
 		</form>
 		<button class="btn btn-warning" type="reset">Effacer</button>
 	</div>
-	
 
-	
+			
+			<div>
+				<!-- Pour le debug -->
+				<div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil.php';" value="Accueil" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu.php';" value="Jeu" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu_test.php';" value="Jeu_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
+                </div>
+			</div>
+
+
 </body>
 
 </html>

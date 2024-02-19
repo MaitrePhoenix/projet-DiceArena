@@ -1,7 +1,9 @@
 <?php
     // definir les sessions
-    // partie chiffrement
+    session_start();
 
+    // partie chiffrement
+    
     // Générer un code unique
     //$code_unique = uniqid();
 
@@ -37,7 +39,7 @@
         include "../traitement/traiterJeu.php"; 
         //print_r(poserDes(2));?>
         <h1><center>Bienvenue sur le site DiceArena !</center></h1>
-        <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
+        <!-- <p>Merci de vous identifier pour créer une partie.</p> -->
         <!-- Affichage du message d'erreur -->
         <!-- Code saisit invalide | pseudo deja empreinter | -->
         
@@ -66,5 +68,30 @@
             
         </div> -->
     </div>
+    
+                <!-- Pour le debug -->
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil.php';" value="Accueil" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu.php';" value="Jeu" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu_test.php';" value="Jeu_test" />
+                </div>
+
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/connexion.php';" value="Connexion" />
+                </div>
+                <div>
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
+                </div>
+
+
+
 </body>
 </html>

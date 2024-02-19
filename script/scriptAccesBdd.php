@@ -20,12 +20,17 @@ function getJoueurById($id){
 
 function getJoueurForConnexion($pseudo, $mdp){
     global $connexion;
+    $mdp_hash = password_hash($mdp,PASSWORD_DEFAULT);
+    
     $requete = $connexion->prepare("Select * from joueur where pseudo = :pseudo and mdp = :mdp");
     $requete->bindParam(':pseudo', $pseudo);
     $requete->bindParam(':mdp', $mdp);
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
+
+    var_dump('Le result est'.$result);
+    //exit();
 }
 
 function getPartieByCode($code){
@@ -35,13 +40,18 @@ function getPartieByCode($code){
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
+
+    var_dump($result);
+    exit();
 }
 
 function createJoueur($pseudo, $mdp){
     global $connexion;
+    $mdp_hash = password_hash($mdp,PASSWORD_DEFAULT);
+
     $requete = $connexion->prepare("Insert into joueur (pseudo, mdp) values (:pseudo, :mdp)");
     $requete->bindParam(':pseudo', $pseudo);
-    $requete->bindParam(':mdp', $mdp);
+    $requete->bindParam(':mdp', $mdp_hash);
     $requete->execute();
 }
 
@@ -75,7 +85,7 @@ function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, 
 function shouldIPlay(int $joueurId): bool 
 {
     global $connexion;
-    $partyID = $_SESSION['code'];
+    $partyID = 1;//$_SESSION['code'];
 
     $stmt = $connexion->prepare("SELECT tourJoueur FROM partie WHERE code = :code");
     $stmt->bindParam(':code',$partyID);
@@ -86,6 +96,31 @@ function shouldIPlay(int $joueurId): bool
     return $_SESSION['userId'] !== $tourJoueur['tourJoueur'];
 
 }
+
+function updateBDDPartie()
+{
+    global $connexion;
+    $plateauUp = $_SESSION['Champ'];
+    $code = $_SESSION['Code'];
+    $requete = $connexion->prepare("Update partie set plateauJ1 = :plateauJ1 where code = :code");
+    $requete->bindParam(':plateauJ1', $plateauUp);
+    $requete->bindParam(':Code', $code);
+
+    $requete->execute();
+}
+
+
+//A deplacer (INUTILE - PAS FINI DE CREER)
+// function estConnecte(int $joueurId): bool
+// {
+//     global $connexion;
+//     $plateauUp = $_SESSION['id'];
+    
+//     $requete = $connexion->prepare("Update partie set plateauJ1 = :plateauJ1 where code = :code");
+//     $requete->bindParam(':plateauJ1', $plateauUp);
+
+//     $requete->execute();
+// }
 // function updatePartie($partie){
 //     updatePartie($partie["code"], $partie["plateauJ1"], $partie["plateauJ2"], $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
 // }
