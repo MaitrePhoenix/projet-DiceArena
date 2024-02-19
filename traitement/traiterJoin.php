@@ -48,10 +48,7 @@
     function rejoindrePartie($code){
         $partie = getPartieByCode($code);
         if($partie == null){
-            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');</script>";  
-            header("location: ../page/accueil.php");
-            
-            
+            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');window.location.href = '../page/accueil.php';</script>";
         }
         else if ($partie["joueur1"] == $_SESSION["userId"] || $partie["joueur2"] == $_SESSION["userId"] || $partie["joueur2"] == null){
             var_dump($code);
@@ -61,7 +58,7 @@
             $_SESSION['idGame'] = $code;
         }
         else{
-            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie pleine)');</script>";
+            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie pleine)');window.location.href = '../page/accueil.php';</script>";
         }
 
     }
