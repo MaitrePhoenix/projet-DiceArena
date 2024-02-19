@@ -12,11 +12,13 @@ require_once "../script/scriptAccesBdd.php";
 $loginUtilisateur = $_SESSION["pseudo"];
 //$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
 
-// Récupérer le code unique depuis l'URL
+// Récupérer le code unique //depuis l'URL
+// creerPartie();
 //$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
-$code_unique = $_SESSION['code'];
+$code_unique = null;//$_SESSION['code'];
+//$_SESSION['code'] = $code_unique;
 
-echo "Joueur en ligne : $loginUtilisateur";
+echo "Joueur en ligne : $loginUtilisateur<br>";
 // Afficher le code unique
 echo "Votre code unique est : $code_unique";
 ?>
@@ -40,7 +42,7 @@ echo "Votre code unique est : $code_unique";
         <!-- Code saisit invalide | pseudo deja empreinter | -->
         <div>
             <label for="cdPartie">Code de la partie : </label>
-            
+            <label><?php echo $code_unique; ?></label>
             <label >
         </div>
 
@@ -87,5 +89,10 @@ echo "Votre code unique est : $code_unique";
 
 
     </div>
+    <div id="conteneur-actions"></div>
+    <div>
+        </div>
+    <button id="boutonPrendreLaMain">Prendre la main</button>
+    <script src="qui_joue.js"></script>
 </body>
 </html>

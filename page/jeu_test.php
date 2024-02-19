@@ -82,7 +82,7 @@ cre
                 </div>
 
                 <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/jeu.php';" value="Jeu" />
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu.php';" value="Jeu" />
                 </div>
 
                 <div>

@@ -75,7 +75,6 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
 	</div>
 
 			
-			<div>
 				<!-- Pour le debug -->
 				<div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil.php';" value="Accueil" />
@@ -94,7 +93,6 @@ $erreurMessIdent = "Erreur d'identification. Veuillez vérifier vos informations
                 <div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
                 </div>
-			</div>
 
 
 </body>

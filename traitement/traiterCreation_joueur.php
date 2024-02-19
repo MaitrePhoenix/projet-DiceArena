@@ -42,7 +42,7 @@
     var_dump($_REQUEST);
 
     createJoueur($pseudo, $mdp);
-    //var_dump(createJoueur);
+    //var_dump($createJoueur);
     
     header("location: ../page/connexion.php");
 
@@ -50,12 +50,25 @@
     // $result = getJoueurForConnexion($pseudo, $mdp);
     // var_dump($result);
     
+    //pour se connecter
+    // $mdp_hash = password_hash($mdp,PASSWORD_DEFAULT);
+    // $requete = $connexion->prepare("Select * from joueur where pseudo = :pseudo and mdp = :mdp");
+    // $requete->bindParam(':pseudo', $pseudo);
+    // $requete->bindParam(':mdp', $mdp_hash);
+    // $requete->execute();
+    // $result = $requete->fetch(PDO::FETCH_ASSOC);
+    // var_dump($requete);
+    // var_dump($result);
+    //exit();
 
     // //header("location: ../page/accueil.php");
-    // $_SESSION["pseudo"] = $pseudo;
+    $_SESSION["pseudo"] = $pseudo;
+    //$_SESSION['userId'] = $idUtilisateur;
     // $_SESSION['userId'] = $result[0]['id'];
 
-    // exit();
+
+    //var_dump($_SESSION);
+    //exit();
 
     //----------------------------------------
     

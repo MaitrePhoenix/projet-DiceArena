@@ -53,7 +53,7 @@ session_start();
 
 <body>
     <!-- Navbar-->
-    <!-- ZeBoss li3-mil -->
+    <!-- mael ZeBoss  max li3-mil -->
     <?php //echo password_hash("li3-mil",PASSWORD_DEFAULT); ?>
     <nav class="navbar navbar-expand-md navbar-light" 
          style="background-color: blueviolet;">
