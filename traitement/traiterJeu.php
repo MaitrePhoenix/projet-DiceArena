@@ -36,8 +36,8 @@ function poserDes($numColonne){
     $partie = getPartieByCode($codePartie);
     $de = $partie["currentDice"];
 
-    $plateauPrincipal = $partie["tourJoueur"] == 1 ? $partie["plateauJ1"] : $partie["plateauJ2"];
-    $plateauAdversaire = $partie["tourJoueur"] == 1 ? $partie["plateauJ2"] : $partie["plateauJ1"];
+    $plateauPrincipal = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ1"] : $partie["plateauJ2"]);
+    $plateauAdversaire = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ2"] : $partie["plateauJ1"]);
 
     for($i = 0; $i < 3; $i++){
         if($plateauPrincipal[$numColonne][$i] == 0){
@@ -107,8 +107,8 @@ function getScore($plateau){
 function getVainqueur(){
     global $codePartie;
     $partie = getPartieByCode($codePartie);
-    $plateauJ1 = $partie["plateauJ1"];
-    $plateauJ2 = $partie["plateauJ2"];
+    $plateauJ1 = json_decode($partie["plateauJ1"]);
+    $plateauJ2 = json_decode($partie["plateauJ2"]);
     $scoreJ1 = getScore($plateauJ1);
     $scoreJ2 = getScore($plateauJ2);
 

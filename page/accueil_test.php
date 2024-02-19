@@ -83,7 +83,7 @@ session_start();
             <?php if (!isset($_SESSION['pseudo'])) { ?>
             <li>
                 <div class="nav-item position-absolute top-0 end-0 navbar">
-                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/connexion.php';" value="Connexion" />
+                    <input type="button" onclick="window.location.href = 'connexion.php';" value="Connexion" />
                 </div>
             </li>
             <?php } else { 
