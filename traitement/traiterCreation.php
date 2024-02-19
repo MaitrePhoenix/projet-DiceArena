@@ -18,6 +18,7 @@
 
     function creerEtDirigerVersPartie(){
         $idUtilisateur = $_SESSION["userId"];
+        $idUtilisateur = $_SESSION["userId"];
 
         $idPartie = creerPartie($idUtilisateur);
         $_SESSION['code'] = $idPartie;

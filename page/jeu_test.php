@@ -12,7 +12,7 @@ $loginUtilisateur = $_SESSION["pseudo"];
 $idUtilisateur = $_SESSION["idUser"];
 
 //creer partie
-creerPartie()
+cre
 
 
 ?>
@@ -82,8 +82,8 @@ creerPartie()
                 </div>
 
                 <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/jeu.php';" value="Jeu" />
-
+                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/jeu.php';" value="Jeu" />
+                </div>
 
                 <div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/connexion.php';" value="Connexion" />
