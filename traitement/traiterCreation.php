@@ -21,7 +21,7 @@
         $idUtilisateur = $_SESSION["userId"];
 
         $idPartie = creerPartie($idUtilisateur);
-        $_SESSION['code'] = $idPartie;
+        $_SESSION['idGame'] = $idPartie;
 
         //redirection automatique vers la page de jeu
         header("location: ../page/jeu.php");

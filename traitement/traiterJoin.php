@@ -36,24 +36,30 @@
     $code = isset($_REQUEST['code']) ? intval($_REQUEST['code']) : 0;
 
     // var_dump($_REQUEST);
-    var_dump($code);
+    //var_dump($code);
     //exit();
 
     // Vérifier si l'action est définie dans la requête POST
-    if(isset($_POST['action']) && !empty($_POST['action'])) {
-
+    //if(isset($_POST['action']) && !empty($_POST['action'])) {
         rejoindrePartie($code);
         //exit();
-    }
+    //}
 
     function rejoindrePartie($code){
-        
-        $idPartie = getPartieByCode($code);
-        var_dump($idPartie);
-        //exit();
-        //redirection automatique vers la page de jeu
-        header("location: ../page/jeu.php");
-        $_SESSION['idGame'] = $idPartie;
+        $partie = getPartieByCode($code);
+        if($partie == null){
+            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');</script>";
+        }
+        else if ($partie["joueur1"] == $_SESSION["userId"] || $partie["joueur2"] == $_SESSION["userId"] || $partie["joueur2"] == null){
+            var_dump($code);
+            //exit();
+            //redirection automatique vers la page de jeu
+            header("location: ../page/jeu.php");
+            $_SESSION['idGame'] = $code;
+        }
+        else{
+            echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie pleine)');</script>";
+        }
 
     }
 
