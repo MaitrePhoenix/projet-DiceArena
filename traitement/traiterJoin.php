@@ -53,7 +53,7 @@
         //exit();
         //redirection automatique vers la page de jeu
         header("location: ../page/jeu.php");
-        $_SESSION['idGame'] = $idPartie;
+        $_SESSION['code'] = $idPartie;
 
     }
 

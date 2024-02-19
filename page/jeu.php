@@ -57,7 +57,7 @@ echo "Votre code unique est : $code_unique";
         <div>
             <label for="inDemande">C'est à moi ? : </label>
             <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-            <button class="btn btn-warning" type="reset" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
+            <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
         </div>
         <div style="margin-top: 10px;">
             <label id="rappelValue">Rappel des valeurs : </label>
@@ -93,6 +93,6 @@ echo "Votre code unique est : $code_unique";
     <div>
         </div>
     <button id="boutonPrendreLaMain">Prendre la main</button>
-    <script src="qui_joue.js"></script>
+    <script src="../script/qui_joue.js"></script>
 </body>
 </html>

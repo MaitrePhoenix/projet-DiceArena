@@ -26,9 +26,6 @@
         //redirection automatique vers la page de jeu
         header("location: ../page/jeu.php");
         
-
     }
-
-
-    
+   
 ?>
