@@ -53,6 +53,10 @@ function createJoueur($pseudo, $mdp){
     $requete->bindParam(':pseudo', $pseudo);
     $requete->bindParam(':mdp', $mdp_hash);
     $requete->execute();
+
+    //retourne l'id du joueur
+    $lastInsertId = $connexion->lastInsertId();
+    return $lastInsertId;
 }
 
 function createPartie($plateauJ1, $plateauJ2, $tourJoueur, $currentDice, $joueur1){
@@ -98,6 +102,6 @@ function shouldIPlay($joueurId, $partyID): bool
 
     $tourJoueur = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $_SESSION['userId'] !== $tourJoueur['tourJoueur']; 
+    return $joueurId == $tourJoueur['tourJoueur']; 
 
 }

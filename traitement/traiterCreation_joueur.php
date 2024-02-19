@@ -41,8 +41,11 @@
 
     var_dump($_REQUEST);
 
-    createJoueur($pseudo, $mdp);
+    $idJoueur = createJoueur($pseudo, $mdp);
     //var_dump($createJoueur);
+    
+    $_SESSION["pseudo"] = $pseudo;
+    $_SESSION["userId"] = $$idJoueur;
     
     header("location: ../page/connexion.php");
 
@@ -62,7 +65,7 @@
     //exit();
 
     // //header("location: ../page/accueil.php");
-    $_SESSION["pseudo"] = $pseudo;
+    
     //$_SESSION['userId'] = $idUtilisateur;
     // $_SESSION['userId'] = $result[0]['id'];
 
