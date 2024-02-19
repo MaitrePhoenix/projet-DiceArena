@@ -47,7 +47,6 @@ echo "Votre code unique est : $code_unique";
         </div>
 
         <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
-        <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
             <div>
                 <label for="inCreator">Joueur 1/2: </label>
                 <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
