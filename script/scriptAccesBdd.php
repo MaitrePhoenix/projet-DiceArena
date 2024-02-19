@@ -96,6 +96,6 @@ function shouldIPlay($joueurId, $partyID): bool
 
     $tourJoueur = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $_SESSION['userId'] !== $tourJoueur['tourJoueur']; 
+    return $joueurId == $tourJoueur['tourJoueur']; 
 
 }
