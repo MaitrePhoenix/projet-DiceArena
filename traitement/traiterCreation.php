@@ -16,11 +16,11 @@
     }
 
     function creerEtDirigerVersPartie(){
-        $idUtilisateur = $_SESSION["idUser"];
+        $idUtilisateur = $_SESSION["userId"];
 
         $idPartie = creerPartie($idUtilisateur);
 
-        //ajouter la redirection automatique
+        //ajo     utomatique
     }
 
 
