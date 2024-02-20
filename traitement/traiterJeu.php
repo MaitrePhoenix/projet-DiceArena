@@ -1,5 +1,6 @@
 <?php
 //contient toute les fonctions servant au fonctionnement du jeu
+//session_start();
 
 include_once "../script/scriptAccesBdd.php";
 
@@ -24,8 +25,8 @@ function creerPartie($joueur1){
 
 
 //fonction appelé lorsqu'un joueur pose un dé, l'ajoute sur son plateau et enlève les dés adverses
-function poserDes($numColonne){
-    $codePartie = $_SESSION["idGame"];
+function poserDes($numColonne,$codePartie){
+    //$codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $de = $partie["currentDice"];
 
@@ -63,11 +64,11 @@ function poserDes($numColonne){
     //$partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
     //$partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
 
-    changerTour();
+    changerTour($codePartie);
 }
 
-function changerTour(){
-    $codePartie = $_SESSION["idGame"];
+function changerTour($codePartie){
+    //$codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $partie["currentDice"] = rand(1,6);
     $partie["tourJoueur"] = $partie["tourJoueur"] == 1 ? 2 : 1;

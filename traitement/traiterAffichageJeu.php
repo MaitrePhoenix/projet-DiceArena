@@ -32,13 +32,11 @@ function affichageBoutons($plateau){
     //affiche les boutons si la partie n'a pas de vainqueur et si c'est le tour du joueur
     if(getVainqueur() == 0 && shouldIPlay($userId)){
         echo("<tr>");
-        for($i = 0; $i < count($plateau[1]); $i++){
-            $num = $i+1;
-            
+        for($i = 1; $i <= count($plateau[1]); $i++){
             //echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
             // V1 - echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"><button type="button" class="btn btn-warning" onclick="actionDeJeu('.$i.')">Inserer colonne '.$num.'</button></div></td>');}
-            //<input type="hidden" name="actionInsertion" value="'.$i.'">
-            echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"> <form id="placement-form" action="../traitement/traiterPlacement.php" method="post"><button type="submit" id="btnInsert" class="btn btn-warning" value="'.$i.'">Inserer colonne '.$num.'</button></form> </div></td>');
+            //value="'.$i.'"
+            echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"> <form id="placement-form" action="../traitement/traiterPlacement.php" method="post"><input type="hidden" name="actionInsertion" value="'.$i.','.$idGame.'"><button type="submit" id="btnInsert" class="btn btn-warning">Inserer colonne '.$i.'</button></form> </div></td>');
         }
         echo("</tr>");
     }
