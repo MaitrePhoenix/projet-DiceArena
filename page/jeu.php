@@ -73,7 +73,7 @@ $idUser = $_SESSION['userId'];
                 <h2>Bravo Vous avez gagné !!! </h2>
             <?php } 
             else{?>
-                <h2 for="inCreator">Dommage, vous avez perdu </h2>
+                <h2>Dommage, vous avez perdu </h2>
             <?php } 
         } 
         else {
