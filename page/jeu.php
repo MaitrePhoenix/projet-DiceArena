@@ -71,17 +71,17 @@ $idUser = $_SESSION['userId'];
         
         <?php if(shouldIPlay($idUser)) {  ?>
             <div>
-                <label for="inCreator">Joueur 1/2: </label>
-                <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
-                <button class="btn btn-primary" type="submit" id="btnCreate">Valider</button>
+                <label for="inCreator">C'est à votre tour </label>
             </div>
-        <?php } ?>
+        <?php } 
+        else { ?>
 
         <div>
-            <label for="inDemande">C'est à moi ? : </label>
+            <label for="inDemande">C'est au tour de votre adversaire : </label>
             <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-            <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
+            <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
         </div>
+        <?php } ?>
         <div style="margin-top: 10px;">
             <label>Dès à placer :
                 <?php
