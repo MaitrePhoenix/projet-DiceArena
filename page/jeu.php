@@ -4,9 +4,10 @@ session_start(); // "premiere instruction; pas de texte, ; entete de communicati
 // il faut etre connecter
 
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
-include('../includes/inc_headers.php');
+require_once('../includes/inc_headers.php');
 
 require_once "../script/scriptAccesBdd.php";
+require_once "../traitement/traiterAffichageJeu.php";
 
 // Récupérer les informations depuis les paramètres d'URL
 $loginUtilisateur = $_SESSION["pseudo"];
@@ -80,7 +81,20 @@ $code_unique = $_SESSION['idGame'];
             <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
         </div>
         <div style="margin-top: 10px;">
-            <label id="rappelValue">Rappel des valeurs : </label>
+            <label>Dès à placer :
+                <?php
+                
+                ?>
+            </label>
+            <label>Plateau adverse :</label>
+            <?php 
+                genererPlateauHTML("opponent");
+            ?>
+
+            <label>Votre plateau :</label>
+            <?php 
+                genererPlateauHTML("player");
+            ?>
             <!-- Champ entrée + qui l'a saisi-->
         </div>
         <div>
