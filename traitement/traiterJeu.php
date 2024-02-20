@@ -97,6 +97,7 @@ function getScore($plateau){
     return $score;
 }
 
+//retourne 1 ou 2 en fonction du vainqueur et 0 s'il n'y a pas de vainqueur
 function getVainqueur(){
     $codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
