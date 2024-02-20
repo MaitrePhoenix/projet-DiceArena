@@ -20,6 +20,7 @@ function genererPlateauHTML($joueur){
     $plateau = inverserTableau($plateau);
 
     echo("<table style=\"border-collapse: collapse; width: 100%;table-layout: fixed;\">");
+        affichageBoutons($plateau);
         for($i = 0; $i < count($plateau); $i++){
             echo("<tr>");
             for($j = 0; $j < count($plateau[$i]); $j++){
@@ -28,6 +29,20 @@ function genererPlateauHTML($joueur){
             echo("</tr>");
         }
     echo("</table>");
+}
+
+function affichageBoutons($plateau){
+    $idGame = $_SESSION['idGame'];
+    $userId = $_SESSION['userId'];
+    $partie = getPartieByCode($idGame);
+    //id du player donc c'est el tours
+    if(shouldIPlay($userId)){
+        echo("<tr>");
+        for($i = 0; $i < count($plateau[1]); $i++){
+            echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
+        }
+        echo("</tr>");
+    }
 }
 
 function inverserTableau($tableau) {

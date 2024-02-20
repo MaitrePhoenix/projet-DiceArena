@@ -11,17 +11,19 @@ require_once "../traitement/traiterAffichageJeu.php";
 
 // Récupérer les informations depuis les paramètres d'URL
 $loginUtilisateur = $_SESSION["pseudo"];
+$codePartie = $_SESSION["idGame"];
+$idUser = $_SESSION['userId'];
 //$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
 
 // Récupérer le code unique //depuis l'URL
 // creerPartie();
-//$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
-$code_unique = $_SESSION['idGame'];
-//$_SESSION['code'] = $code_unique;
+//$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
+
+//$_SESSION['code'] = $codePartie;
 
 //echo "Joueur en ligne : $loginUtilisateur<br>";
 // Afficher le code unique
-//echo "Votre code unique est : $code_unique";
+//echo "Votre code unique est : $codePartie";
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +69,7 @@ $code_unique = $_SESSION['idGame'];
         
         <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
         
-        <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
+        <?php if(shouldIPlay($idUser)) {  ?>
             <div>
                 <label for="inCreator">Joueur 1/2: </label>
                 <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
@@ -83,7 +85,7 @@ $code_unique = $_SESSION['idGame'];
         <div style="margin-top: 10px;">
             <label>Dès à placer :
                 <?php
-                
+                echo(getPartieByCode($codePartie)["currentDice"]);
                 ?>
             </label>
             <label>Plateau adverse :</label>

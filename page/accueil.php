@@ -1,7 +1,9 @@
 <?php
     // definir les sessions
     session_start();
-    $current_pseudo = $_SESSION['pseudo'];
+    if(isset($_SESSION['pseudo'])){
+        $current_pseudo = $_SESSION['pseudo'];
+    }
 ?>
 
 <!DOCTYPE html>

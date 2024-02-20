@@ -40,9 +40,6 @@ function getPartieByCode($code){
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
-
-    //var_dump($result);
-    //exit();
 }
 
 function createJoueur($pseudo, $mdp){
@@ -92,16 +89,11 @@ function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, 
     $requete->execute();
 }
 
-function shouldIPlay($joueurId, $partyID): bool 
+function shouldIPlay($joueurId): bool 
 {
-    global $connexion;
-
-    $stmt = $connexion->prepare("SELECT tourJoueur FROM partie WHERE code = :code");
-    $stmt->bindParam(':code',$partyID);
-    $stmt->execute();
-
-    $tourJoueur = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    return $joueurId == $tourJoueur['tourJoueur']; 
+    $partyID = $_SESSION['idGame'];
+    $partie = getPartieByCode($partyID);
+    $idPlayerTour = ($partie["tourJoueur"] == 1) ? $partie["joueur1"] : $partie["joueur2"];
+    return $joueurId == $idPlayerTour; 
 
 }
