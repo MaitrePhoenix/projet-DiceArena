@@ -25,7 +25,7 @@ function affichageBoutons($plateau){
     $userId = $_SESSION['userId'];
     $partie = getPartieByCode($idGame);
 
-    //id du player donc c'est el tours
+    //affiche les boutons si la partie n'a pas de vainqueur et si c'est le tour du joueur
     if(getVainqueur() == 0 && shouldIPlay($userId)){
         echo("<tr>");
         for($i = 0; $i < count($plateau[1]); $i++){
