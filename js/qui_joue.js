@@ -102,7 +102,7 @@ function desactiverActions() {
 
 
 // Sélectionner le bouton "Prendre la main"
-var boutonPrendreLaMain = document.getElementById("boutonPrendreLaMain");
+var boutonPrendreLaMain = document.getElementById("btnTakeOver");
 
 // Ajouter un écouteur d'événements pour le clic sur le bouton "Prendre la main"
 boutonPrendreLaMain.addEventListener("click", prendreLaMain);

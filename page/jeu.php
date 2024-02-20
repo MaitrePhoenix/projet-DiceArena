@@ -141,7 +141,7 @@ $idUser = $_SESSION['userId'];
     <div id="conteneur-actions"></div>
     <div>
         </div>
-    <button id="boutonPrendreLaMain">Prendre la main</button>
+    
     <script src="../script/qui_joue.js"></script>
 </body>
 </html>

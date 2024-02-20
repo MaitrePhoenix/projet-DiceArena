@@ -20,5 +20,5 @@ function attenteJoueur() {
 
 // Appeler la fonction pour vérifier le joueur lors du chargement de la page
 window.onload = function() {
-    verifierJoueur();
+    attenteJoueur();
 };	

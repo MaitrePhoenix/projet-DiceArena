@@ -28,7 +28,7 @@
                         font-weight-bold text-uppercase px-3" 
                     href= 'accueil.php'>Accueil</a>
             </li>
-            <?php if (!isset($current_pseudo)) { ?>
+            <?php if (!isset($_SESSION['pseudo'])) { ?>
             <li>
                 <div class="nav-item position-absolute top-0 end-0 navbar">
                     <input type="button" onclick="window.location.href = 'connexion.php';" value="Connexion" />
@@ -48,7 +48,7 @@
         <!-- <p>Merci de vous identifier pour créer une partie.</p> -->
         <!-- Affichage du message d'erreur -->
         <!-- Code saisit invalide | pseudo deja empreinter | -->
-        <?php if (isset($current_pseudo)) { ?>
+        <?php if (isset($_SESSION['pseudo'])) { ?>
         <div class="center_container" style="background-color: #fff;
                                     padding: 30px;
                                     border-radius: 8px;
