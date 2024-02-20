@@ -1,6 +1,8 @@
 <?php
 
 include_once "../script/scriptAccesBdd.php";
+include_once "../traitement/traiterJeu.php";
+include_once "../traitement/traiterPlacement.php";
 
 //prend en paramètre "player" si c'est le plateau du joueur ou 
 //"opponent" si c'est le plateau de l'adversaire à afficher
@@ -9,7 +11,9 @@ function genererPlateauHTML($joueur){
     $plateau = inverserTableau(getPlateauOfPlayerOrOpponent($joueur));
 
     echo("<table style=\"border-collapse: collapse; width: 100%;table-layout: fixed;\">");
-        affichageBoutons($plateau);
+        if($joueur=="player"){
+            affichageBoutons($plateau);
+        }
         for($i = 0; $i < count($plateau); $i++){
             echo("<tr>");
             for($j = 0; $j < count($plateau[$i]); $j++){
@@ -29,7 +33,12 @@ function affichageBoutons($plateau){
     if(getVainqueur() == 0 && shouldIPlay($userId)){
         echo("<tr>");
         for($i = 0; $i < count($plateau[1]); $i++){
-            echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
+            $num = $i+1;
+            
+            //echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
+            // V1 - echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"><button type="button" class="btn btn-warning" onclick="actionDeJeu('.$i.')">Inserer colonne '.$num.'</button></div></td>');}
+            //<input type="hidden" name="actionInsertion" value="'.$i.'">
+            echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"> <form id="placement-form" action="../traitement/traiterPlacement.php" method="post"><button type="submit" id="btnInsert" class="btn btn-warning" value="'.$i.'">Inserer colonne '.$num.'</button></form> </div></td>');
         }
         echo("</tr>");
     }

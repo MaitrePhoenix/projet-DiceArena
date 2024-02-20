@@ -63,6 +63,7 @@ $idUser = $_SESSION['userId'];
             
         </ul>
     </nav>
+
     <div class="container">
         
         <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
@@ -77,17 +78,10 @@ $idUser = $_SESSION['userId'];
             <?php } 
         } 
         else {
+            
             if(shouldIPlay($idUser)) {  ?>
                 <div>
                     <label for="inCreator">C'est à votre tour </label>
-                </div>
-                <?php } 
-                else { ?>
-
-                <div>
-                    <label for="inDemande">C'est au tour de votre adversaire : </label>
-                    <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-                    <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
                     <br>
                     <label>Dès à placer :
                         <?php
@@ -95,8 +89,19 @@ $idUser = $_SESSION['userId'];
                         ?>
                     </label>
                 </div>
+                
+                <?php } 
+                else { ?>
+
+                <div>
+                    <label for="inDemande">C'est au tour de votre adversaire : </label>
+                    <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
+                    <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
+                    
+                </div>
             <?php } 
         } ?>
+        
         <div style="margin-top: 10px;">
             
             <br>
@@ -114,11 +119,16 @@ $idUser = $_SESSION['userId'];
             <label>Votre score : <?php echo(getScore(getPlateauOfPlayerOrOpponent("player"))) ?> </label>
             <!-- Champ entrée + qui l'a saisi-->
         </div>
-        <div>
+
+    </div>
+
+
+
+            <div>
             <!-- Partie log -->
-        </div>
+            </div>
 
-
+            <div>
                 <!-- Pour le debug -->
 
                 <div>
@@ -135,13 +145,11 @@ $idUser = $_SESSION['userId'];
                 <div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
                 </div>
-
-
-    </div>
+            </div>
     <div id="conteneur-actions"></div>
-    <div>
-        </div>
     
-    <script src="../script/qui_joue.js"></script>
+    
+    <!-- <script src="../script/qui_joue.js"></script> -->
+    <!-- <script src="js/test.js"></script> -->
 </body>
 </html>
