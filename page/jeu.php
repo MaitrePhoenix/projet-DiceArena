@@ -78,7 +78,18 @@ $code_unique = $_SESSION['idGame'];
             <label for="inDemande">C'est à moi ? : </label>
             <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
             <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
+            <button id="btnTakeOver" action="../script/qui_joue.php">Prendre la main</button>
         </div>
+
+        <button id="myButton">Verifier</button>
+
+        <script>
+            document.getElementById("myButton").addEventListener("click", function() {
+                // Exécuter votre action ici
+                window.location.href = "../script/verifier_attente.php";
+            });
+        </script>
+
         <div style="margin-top: 10px;">
             <label id="rappelValue">Rappel des valeurs : </label>
             <!-- Champ entrée + qui l'a saisi-->
@@ -110,7 +121,7 @@ $code_unique = $_SESSION['idGame'];
     <div id="conteneur-actions"></div>
     <div>
         </div>
-    <button id="boutonPrendreLaMain">Prendre la main</button>
+    
     <script src="../script/qui_joue.js"></script>
 </body>
 </html>
