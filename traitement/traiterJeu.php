@@ -71,7 +71,7 @@ function changerTour(){
     $partie = getPartieByCode($codePartie);
     $partie["currentDice"] = rand(1,6);
     $partie["tourJoueur"] = $partie["tourJoueur"] == 1 ? 2 : 1;
-    updatePartie($partie);
+    updatePartieViaItem($partie);
 }
 
 //retourne le score du plateau passé en paramètre, le score est égal à la somme des dés présents sur le plateau, si sur la colonne il y a 3 dés identiques, le score est multiplié par 4, si il y en a 2 identiques, le score est multiplié par 2

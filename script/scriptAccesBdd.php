@@ -81,7 +81,7 @@ function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, 
     $plateau2 = json_encode($plateauJ2);
     $requete = $connexion->prepare("Update partie set plateauJ1 = :plateauJ1, plateauJ2 = :plateauJ2, tourJoueur = :tourJoueur, currentDice = :currentDice, joueur2 = :joueur2 where code = :code");
     $requete->bindParam(':code', $code);
-    $requete->bindParam(':plateauJ1', $plateau1 );
+    $requete->bindParam(':plateauJ1', $plateau1);
     $requete->bindParam(':plateauJ2', $plateau2);
     $requete->bindParam(':tourJoueur', $tourJoueur);
     $requete->bindParam(':currentDice', $currentDice);
@@ -116,4 +116,8 @@ function getPlateauOfPlayerOrOpponent($joueur){
     }
 
     return $plateau;
+}
+
+function updatePartieViaItem($partie){
+    updatePartie($partie["code"], json_decode($partie["plateauJ1"]), json_decode($partie["plateauJ2"]), $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
 }

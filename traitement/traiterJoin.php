@@ -54,8 +54,10 @@
             var_dump($code);
             //exit();
             //redirection automatique vers la page de jeu
-            header("location: ../page/jeu.php");
             $_SESSION['idGame'] = $code;
+            $partie["joueur2"] = $_SESSION['userId'];
+            updatePartieViaItem($partie);
+            header("location: ../page/jeu.php");
         }
         else{
             echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie pleine)');window.location.href = '../page/accueil.php';</script>";
