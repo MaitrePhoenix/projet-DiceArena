@@ -24,8 +24,9 @@ function affichageBoutons($plateau){
     $idGame = $_SESSION['idGame'];
     $userId = $_SESSION['userId'];
     $partie = getPartieByCode($idGame);
+
     //id du player donc c'est el tours
-    if(getVainqueur() && shouldIPlay($userId)){
+    if(getVainqueur() == 0 && shouldIPlay($userId)){
         echo("<tr>");
         for($i = 0; $i < count($plateau[1]); $i++){
             echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
