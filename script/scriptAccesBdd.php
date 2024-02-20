@@ -40,9 +40,6 @@ function getPartieByCode($code){
     $requete->execute();
     $result = $requete->fetch(PDO::FETCH_ASSOC);
     return $result;
-
-    //var_dump($result);
-    //exit();
 }
 
 function createJoueur($pseudo, $mdp){
@@ -92,16 +89,31 @@ function updatePartie($code, $plateauJ1, $plateauJ2, $tourJoueur, $currentDice, 
     $requete->execute();
 }
 
-function shouldIPlay($joueurId, $partyID): bool 
+function shouldIPlay($joueurId): bool 
 {
-    global $connexion;
+    $partyID = $_SESSION['idGame'];
+    $partie = getPartieByCode($partyID);
+    $idPlayerTour = ($partie["tourJoueur"] == 1) ? $partie["joueur1"] : $partie["joueur2"];
+    return $joueurId == $idPlayerTour; 
 
-    $stmt = $connexion->prepare("SELECT tourJoueur FROM partie WHERE code = :code");
-    $stmt->bindParam(':code',$partyID);
-    $stmt->execute();
+}
 
-    $tourJoueur = $stmt->fetch(PDO::FETCH_ASSOC);
+//prend en paramètre "player" si c'est le plateau du joueur ou 
+//"opponent" si c'est le plateau de l'adversaire que l'on veut
+function getPlateauOfPlayerOrOpponent($joueur){
+    $userId = $_SESSION['userId'];
+    $partyID = $_SESSION['idGame'];
+    $partie = getPartieByCode($partyID);
 
-    return $joueurId == $tourJoueur['tourJoueur']; 
+    if($joueur == "player"){
+        //met dans la variable le plateau du joueur
+        $plateau = json_decode($partie["joueur1"] == $userId ? $partie["plateauJ1"] : $partie["plateauJ2"]);
+    }
+    //si $joueur = "opponent"
+    else {
+        //met dans la variable le plateau de l'adversaire
+        $plateau = json_decode($partie["joueur1"] == $userId ? $partie["plateauJ2"] : $partie["plateauJ1"]);
+    }
 
+    return $plateau;
 }

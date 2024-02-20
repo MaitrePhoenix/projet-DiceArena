@@ -4,23 +4,27 @@ session_start(); // "premiere instruction; pas de texte, ; entete de communicati
 // il faut etre connecter
 
 // Utilisez include si la non-disponibilité de inc_headers.php n'est pas critique
-include('../includes/inc_headers.php');
+require_once('../includes/inc_headers.php');
 
 require_once "../script/scriptAccesBdd.php";
+require_once "../traitement/traiterAffichageJeu.php";
+require_once "../traitement/traiterJeu.php";
 
 // Récupérer les informations depuis les paramètres d'URL
 $loginUtilisateur = $_SESSION["pseudo"];
+$codePartie = $_SESSION["idGame"];
+$idUser = $_SESSION['userId'];
 //$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
 
 // Récupérer le code unique //depuis l'URL
 // creerPartie();
-//$code_unique = isset($_GET['code']) ? $_GET['code'] : '';
-$code_unique = $_SESSION['idGame'];
-//$_SESSION['code'] = $code_unique;
+//$codePartie = isset($_GET['code']) ? $_GET['code'] : '';
+
+//$_SESSION['code'] = $codePartie;
 
 //echo "Joueur en ligne : $loginUtilisateur<br>";
 // Afficher le code unique
-//echo "Votre code unique est : $code_unique";
+//echo "Votre code unique est : $codePartie";
 ?>
 
 <!DOCTYPE html>
@@ -60,38 +64,54 @@ $code_unique = $_SESSION['idGame'];
         </ul>
     </nav>
     <div class="container">
-        <?php  
-        include "../traitement/traiterJeu.php"; 
-        //print_r(poserDes(2));?>
         
         <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
-        
-        <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
-            <div>
-                <label for="inCreator">Joueur 1/2: </label>
-                <input class="form-control" id="inChamp" name="Champ" type="text" placeholder="champ de saisi J1/2">
-                <button class="btn btn-primary" type="submit" id="btnCreate">Valider</button>
-            </div>
-        <?php } ?>
+        <?php $vainqueur = getVainqueur();
+        if($vainqueur != 0) {
+            if($vainqueur == 1 && getPartieByCode($codePartie)["joueur1"] == $idUser ||
+            $vainqueur == 2 && getPartieByCode($codePartie)["joueur2"] == $idUser){?>
+                <h2>Bravo Vous avez gagné !!! </h2>
+            <?php } 
+            else{?>
+                <h2>Dommage, vous avez perdu </h2>
+            <?php } 
+        } 
+        else {
+            if(shouldIPlay($idUser)) {  ?>
+                <div>
+                    <label for="inCreator">C'est à votre tour </label>
+                </div>
+                <?php } 
+                else { ?>
 
-        <div>
-            <label for="inDemande">C'est à moi ? : </label>
-            <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-            <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">Prendre la main</button>
-            <button id="btnTakeOver" action="../script/qui_joue.php">Prendre la main</button>
-        </div>
-
-        <button id="myButton">Verifier</button>
-
-        <script>
-            document.getElementById("myButton").addEventListener("click", function() {
-                // Exécuter votre action ici
-                window.location.href = "../script/verifier_attente.php";
-            });
-        </script>
-
+                <div>
+                    <label for="inDemande">C'est au tour de votre adversaire : </label>
+                    <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
+                    <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
+                    <br>
+                    <label>Dès à placer :
+                        <?php
+                        echo(getPartieByCode($codePartie)["currentDice"]);
+                        ?>
+                    </label>
+                </div>
+            <?php } 
+        } ?>
         <div style="margin-top: 10px;">
-            <label id="rappelValue">Rappel des valeurs : </label>
+            
+            <br>
+            <label>Plateau adverse :</label>
+            <?php 
+                genererPlateauHTML("opponent");
+            ?>
+            <label>Son score : <?php echo(getScore(getPlateauOfPlayerOrOpponent("opponent"))) ?> </label>
+            <br>
+            <br>
+            <label>Votre plateau :</label>
+            <?php 
+                genererPlateauHTML("player");
+            ?>
+            <label>Votre score : <?php echo(getScore(getPlateauOfPlayerOrOpponent("player"))) ?> </label>
             <!-- Champ entrée + qui l'a saisi-->
         </div>
         <div>

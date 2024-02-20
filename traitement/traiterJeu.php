@@ -3,13 +3,6 @@
 
 include_once "../script/scriptAccesBdd.php";
 
-$codePartie = Null;
-
-function setCodePartie($code){
-    global $codePartie;
-    $codePartie = $code;
-}
-
 function creerTableauVide(){
     return [
         [0,0,0],
@@ -32,7 +25,7 @@ function creerPartie($joueur1){
 
 //fonction appelé lorsqu'un joueur pose un dé, l'ajoute sur son plateau et enlève les dés adverses
 function poserDes($numColonne){
-    global $codePartie;
+    $codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $de = $partie["currentDice"];
 
@@ -74,7 +67,7 @@ function poserDes($numColonne){
 }
 
 function changerTour(){
-    global $codePartie;
+    $codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $partie["currentDice"] = rand(1,6);
     $partie["tourJoueur"] = $partie["tourJoueur"] == 1 ? 2 : 1;
@@ -104,8 +97,9 @@ function getScore($plateau){
     return $score;
 }
 
+//retourne 1 ou 2 en fonction du vainqueur et 0 s'il n'y a pas de vainqueur
 function getVainqueur(){
-    global $codePartie;
+    $codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $plateauJ1 = json_decode($partie["plateauJ1"]);
     $plateauJ2 = json_decode($partie["plateauJ2"]);
