@@ -5,19 +5,8 @@ include_once "../script/scriptAccesBdd.php";
 //prend en paramètre "player" si c'est le plateau du joueur ou 
 //"opponent" si c'est le plateau de l'adversaire à afficher
 function genererPlateauHTML($joueur){
-    $idGame = $_SESSION['idGame'];
-    $userId = $_SESSION['userId'];
-    $partie = getPartieByCode($idGame);
-    if($joueur == "player"){
-        //met dans la variable le plateau du joueur
-        $plateau = json_decode($partie["joueur1"] == $userId ? $partie["plateauJ1"] : $partie["plateauJ2"]);
-    }
-    //si $joueur = "opponent"
-    else {
-        //met dans la variable le plateau de l'adversaire
-        $plateau = json_decode($partie["joueur2"] == $userId ? $partie["plateauJ2"] : $partie["plateauJ1"]);
-    }   
-    $plateau = inverserTableau($plateau);
+    
+    $plateau = inverserTableau(getPlateauOfPlayerOrOpponent($joueur));
 
     echo("<table style=\"border-collapse: collapse; width: 100%;table-layout: fixed;\">");
         affichageBoutons($plateau);
@@ -45,6 +34,7 @@ function affichageBoutons($plateau){
     }
 }
 
+//inverse les lignes et les colonnes
 function inverserTableau($tableau) {
     $tableauInverse = array();
     foreach ($tableau as $ligne => $colonnes) {

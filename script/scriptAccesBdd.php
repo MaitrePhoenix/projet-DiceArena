@@ -97,3 +97,23 @@ function shouldIPlay($joueurId): bool
     return $joueurId == $idPlayerTour; 
 
 }
+
+//prend en paramètre "player" si c'est le plateau du joueur ou 
+//"opponent" si c'est le plateau de l'adversaire que l'on veut
+function getPlateauOfPlayerOrOpponent($joueur){
+    $userId = $_SESSION['userId'];
+    $partyID = $_SESSION['idGame'];
+    $partie = getPartieByCode($partyID);
+
+    if($joueur == "player"){
+        //met dans la variable le plateau du joueur
+        $plateau = json_decode($partie["joueur1"] == $userId ? $partie["plateauJ1"] : $partie["plateauJ2"]);
+    }
+    //si $joueur = "opponent"
+    else {
+        //met dans la variable le plateau de l'adversaire
+        $plateau = json_decode($partie["joueur1"] == $userId ? $partie["plateauJ2"] : $partie["plateauJ1"]);
+    }
+
+    return $plateau;
+}

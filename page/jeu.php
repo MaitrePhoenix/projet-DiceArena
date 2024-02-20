@@ -8,6 +8,7 @@ require_once('../includes/inc_headers.php');
 
 require_once "../script/scriptAccesBdd.php";
 require_once "../traitement/traiterAffichageJeu.php";
+require_once "../traitement/traiterJeu.php";
 
 // Récupérer les informations depuis les paramètres d'URL
 $loginUtilisateur = $_SESSION["pseudo"];
@@ -63,9 +64,6 @@ $idUser = $_SESSION['userId'];
         </ul>
     </nav>
     <div class="container">
-        <?php  
-        include "../traitement/traiterJeu.php"; 
-        //print_r(poserDes(2));?>
         
         <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
         
@@ -88,15 +86,19 @@ $idUser = $_SESSION['userId'];
                 echo(getPartieByCode($codePartie)["currentDice"]);
                 ?>
             </label>
+            <br>
             <label>Plateau adverse :</label>
             <?php 
                 genererPlateauHTML("opponent");
             ?>
-
+            <label>Son score : <?php echo(getScore(getPlateauOfPlayerOrOpponent("opponent"))) ?> </label>
+            <br>
+            <br>
             <label>Votre plateau :</label>
             <?php 
                 genererPlateauHTML("player");
             ?>
+            <label>Votre score : <?php echo(getScore(getPlateauOfPlayerOrOpponent("player"))) ?> </label>
             <!-- Champ entrée + qui l'a saisi-->
         </div>
         <div>
