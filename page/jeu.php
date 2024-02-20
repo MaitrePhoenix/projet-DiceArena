@@ -88,6 +88,7 @@ $idUser = $_SESSION['userId'];
                     <label for="inDemande">C'est au tour de votre adversaire : </label>
                     <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
                     <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
+                    <br>
                     <label>Dès à placer :
                         <?php
                         echo(getPartieByCode($codePartie)["currentDice"]);
