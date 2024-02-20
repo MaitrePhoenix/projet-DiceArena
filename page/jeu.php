@@ -66,26 +66,38 @@ $idUser = $_SESSION['userId'];
     <div class="container">
         
         <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
-        
-        <?php if(shouldIPlay($idUser)) {  ?>
-            <div>
-                <label for="inCreator">C'est à votre tour </label>
-            </div>
-        <?php } 
-        else { ?>
+        <?php $vainqueur = getVainqueur();
+        if($vainqueur != 0) {
+            if($vainqueur == 1 && getPartieByCode($codePartie)["joueur1"] == $idUser ||
+            $vainqueur == 2 && getPartieByCode($codePartie)["joueur2"] == $idUser){?>
+                <h2>Bravo Vous avez gagné !!! </h2>
+            <?php } 
+            else{?>
+                <h2 for="inCreator">Dommage, vous avez perdu </h2>
+            <?php } 
+        } 
+        else {
+            if(shouldIPlay($idUser)) {  ?>
+                <div>
+                    <label for="inCreator">C'est à votre tour </label>
+                </div>
+                <?php } 
+                else { ?>
 
-        <div>
-            <label for="inDemande">C'est au tour de votre adversaire : </label>
-            <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-            <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
-        </div>
-        <?php } ?>
+                <div>
+                    <label for="inDemande">C'est au tour de votre adversaire : </label>
+                    <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
+                    <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
+                    <label>Dès à placer :
+                        <?php
+                        echo(getPartieByCode($codePartie)["currentDice"]);
+                        ?>
+                    </label>
+                </div>
+            <?php } 
+        } ?>
         <div style="margin-top: 10px;">
-            <label>Dès à placer :
-                <?php
-                echo(getPartieByCode($codePartie)["currentDice"]);
-                ?>
-            </label>
+            
             <br>
             <label>Plateau adverse :</label>
             <?php 
