@@ -20,7 +20,7 @@
         $idUtilisateur = $_SESSION["userId"];
 
         $idPartie = creerPartie($idUtilisateur);
-        $_SESSION['idGame'] = $idPartie;
+        $_SESSION['idGame'] = (int) $idPartie;
 
         //redirection automatique vers la page de jeu
         header("location: ../page/jeu.php");

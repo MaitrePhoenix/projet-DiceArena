@@ -46,7 +46,7 @@
     //}
 
     function rejoindrePartie($code){
-        $partie = getPartieByCode($code);
+        $partie = getPartieByCode($code);   
         if($partie == null){
             echo "<script type='text/javascript'>alert('Vous ne pouvez pas rejoindre cette partie (partie non existante)');window.location.href = '../page/accueil.php';</script>";
         }

@@ -18,9 +18,9 @@ $loginUtilisateur = $_SESSION["pseudo"];
 $code_unique = $_SESSION['idGame'];
 //$_SESSION['code'] = $code_unique;
 
-echo "Joueur en ligne : $loginUtilisateur<br>";
+//echo "Joueur en ligne : $loginUtilisateur<br>";
 // Afficher le code unique
-echo "Votre code unique est : $code_unique";
+//echo "Votre code unique est : $code_unique";
 ?>
 
 <!DOCTYPE html>
@@ -35,17 +35,37 @@ echo "Votre code unique est : $code_unique";
     <title>Jeu</title>
 </head>
 <body>
-    <div class="container">
-        <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
-        <!-- <p>Merci de vous identifier pour accéder à l'application.</p> -->
-        <!-- Affichage du message d'erreur -->
-        <!-- Code saisit invalide | pseudo deja empreinter | -->
-        <div>
-            <label for="cdPartie">Code de la partie : </label>
-            <label><?php echo $code_unique; ?></label>
-            <label >
-        </div>
 
+    <nav class="navbar navbar-expand-md navbar-light" 
+         style="background-color: maroon;">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a  class="nav-link text-light 
+                        font-weight-bold text-uppercase px-3" 
+                    href= 'accueil.php'>Accueil</a>
+            </li>
+            <?php echo '<div class="nav-item position-absolute top-0 end-0 navbar text-light" style="display: flex; align-items: flex-end;">
+                            <span style="margin-right: 20px;">Joueur connecté :</span>'. $_SESSION['pseudo'] . '<span style="margin-right: 9px;"></span>' .
+                    '</div>';
+                  echo '<div class="nav-item position-absolute top-1 end-0 navbar text-light" style="margin-top: 10px;">
+                            <span style="margin-right: 18px;">Code de la partie :</span>' . $_SESSION['idGame'] . '<span style="margin-right: 33px;"></span>' . 
+                    '</div>';    
+             ?>
+
+            
+        </ul>
+        <!-- Ajoutez les 3barres pour pouvoir choisir de ce login ou se register -->
+        <ul>
+            
+        </ul>
+    </nav>
+    <div class="container">
+        <?php  
+        include "../traitement/traiterJeu.php"; 
+        //print_r(poserDes(2));?>
+        
+        <h1><center>Bienvenue sur la partie de jeu de DiceArena !</center></h1>
+        
         <?php if(shouldIPlay($_SESSION['userId'],$code_unique)) {  ?>
             <div>
                 <label for="inCreator">Joueur 1/2: </label>
@@ -69,9 +89,7 @@ echo "Votre code unique est : $code_unique";
 
 
                 <!-- Pour le debug -->
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil.php';" value="Accueil" />
-                </div>
+
                 <div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
                 </div>

@@ -1,7 +1,7 @@
 <?php
 // Démarrer la session si elle n'est pas déjà démarrée
 session_start();
-
+var_dump($_SESSION);
 // Vérifier si les informations du joueur et le tour actuel sont disponibles en session
 
 // $loginUtilisateur = $_SESSION["pseudo"];
@@ -56,29 +56,26 @@ session_start();
     <!-- mael ZeBoss  max li3-mil -->
     <?php //echo password_hash("li3-mil",PASSWORD_DEFAULT); ?>
     <nav class="navbar navbar-expand-md navbar-light" 
-         style="background-color: blueviolet;">
-        <a href="#"><i class="fas fa-anchor text-warning fa-2x"></i></a>
+         style="background-color: maroon;">
+         
+        <!-- <a href="#"><i class="fas fa-anchor text-warning fa-2x"></i></a> -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a  class="nav-link text-light 
                         font-weight-bold text-uppercase px-3" 
-                    href="#">Home</a>
+                    href= '../page/accueil.php'>Home</a>
             </li>
-            <li class="nav-item">
-                <a  class="nav-link text-light 
-                        font-weight-bold text-uppercase px-3" 
-                    href="#">Skills</a>
-            </li>
-            <li class="nav-item dropdown">
+            
+            <!-- <li class="nav-item dropdown">
                 <a  class="nav-link text-light 
                         font-weight-bold text-uppercase px-3"
                     href="#">Projects</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Project 1</a>
-                    <a class="dropdown-item" href="#">Project 2</a>
-                    <a class="dropdown-item" href="#">Project 3</a> 
+                    <a class="dropdown-item" href='../page/accueil.php'>Project 1</a>
+                    <a class="dropdown-item" href='../page/connexion.php'>Connexion</a>
+                    <a class="dropdown-item" href='../page/regles.php'>Regles</a> 
                 </div>
-            </li>
+            </li> -->
 
             <?php if (!isset($_SESSION['pseudo'])) { ?>
             <li>
@@ -87,7 +84,14 @@ session_start();
                 </div>
             </li>
             <?php } else { 
-                    echo '<div class="nav-item position-absolute top-0 end-0 navbar text-light">Joueur connecté :  ' . $_SESSION['pseudo'] . '</div>';
+                    echo '<div class="nav-item position-absolute top-0 end-0 navbar text-light" style="display: flex; align-items: flex-end;">
+                            <span style="margin-right: 20px;">Joueur connecté :</span>'. $_SESSION['pseudo'] . '<span style="margin-right: 9px;"></span>' .
+                         '</div>';
+                    //echo '<div class="nav-item position-absolute top-0 end-0 navbar text-light">ID Joueur connecté :  ' . $_SESSION['userId'] . '</div>';
+                    echo '<div class="nav-item position-absolute top-1 end-0 navbar text-light" style="margin-top: 10px;">
+                            <span style="margin-right: 18px;">Code de la partie :</span>' . $_SESSION['userId'] . '<span style="margin-right: 33px;"></span>' . 
+                         '</div>';
+                    
             } ?>
 
             
@@ -97,6 +101,13 @@ session_start();
             
         </ul>
     </nav>
+    <h1 ><center>Bienvenue sur le site DiceArena !</center></h1>
+        <!-- Test verifier_attente.php -->    
+    <form action="../script/verifier_attente.php" method="post" style="display: flex;">
+                <button class="btn btn-warning" type="submit" id="btnJoin" style="margin-right:3px;">Test verifier attente</button>
+                
+    </form>
+
 
     <!-- <div class="collapse" id="navbarToggleExternalContent">
         <div class="bg-dark p-4">
@@ -173,9 +184,6 @@ session_start();
 </div>
                 
                 <!-- Pour le debug -->
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil.php';" value="Accueil" />
-                </div>
                 <div>
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
                 </div>
