@@ -34,16 +34,16 @@ function poserDes($numColonne1,$codePartie){
     $plateauPrincipal = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ1"] : $partie["plateauJ2"]);
     $plateauAdversaire = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ2"] : $partie["plateauJ1"]);
 
-    for($i = 1; $i <= 3; $i++){
+    for($i = 0; $i < 3; $i++){
         if($plateauPrincipal[$numColonne][$i] == 0){
             $plateauPrincipal[$numColonne][$i] = $de;
             break;
         }
     }
 
-    for($i = 1; $i <= 3; $i++){
+    for($i = 0; $i < 3; $i++){
         if($plateauAdversaire[$numColonne][$i] == $de){
-            for ($j = $i; $j < 2; $j++){
+            for ($j = $i; $j < 3; $j++){
                 $plateauAdversaire[$numColonne][$j] = $plateauAdversaire[$numColonne][$j+1];
             }
             $plateauAdversaire[$numColonne][$i] = 0;
@@ -62,8 +62,8 @@ function poserDes($numColonne1,$codePartie){
     }
 
     //Anciennement
-    //$partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
-    //$partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
+    $partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
+    $partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
 
     changerTour($codePartie);
 }

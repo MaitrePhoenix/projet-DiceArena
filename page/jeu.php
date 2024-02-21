@@ -36,6 +36,7 @@ $idUser = $_SESSION['userId'];
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
     <title>Jeu</title>
 </head>
 <body>
@@ -55,12 +56,6 @@ $idUser = $_SESSION['userId'];
                             <span style="margin-right: 18px;">Code de la partie :</span>' . $_SESSION['idGame'] . '<span style="margin-right: 33px;"></span>' . 
                     '</div>';    
              ?>
-
-            
-        </ul>
-        <!-- Ajoutez les 3barres pour pouvoir choisir de ce login ou se register -->
-        <ul>
-            
         </ul>
     </nav>
 
@@ -96,8 +91,8 @@ $idUser = $_SESSION['userId'];
                 <div>
                     <label for="inDemande">C'est au tour de votre adversaire : </label>
                     <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-                    <button class="btn btn-warning" type="submit" id="btnDemande" action="../script/qui_joue.php" method="post">A-t-il fini?</button>
-                    
+                    <button class="btn btn-warning" type="submit" id="btnDemande" onmethod="post">A-t-il fini?</button>
+                    <script src="../js/qui_joue.js"></script>
                 </div>
             <?php } 
         } ?>
@@ -122,34 +117,5 @@ $idUser = $_SESSION['userId'];
 
     </div>
 
-
-
-            <div>
-            <!-- Partie log -->
-            </div>
-
-            <div>
-                <!-- Pour le debug -->
-
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
-                </div>
-
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/jeu_test.php';" value="Jeu_test" />
-                </div>
-
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/connexion.php';" value="Connexion" />
-                </div>
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
-                </div>
-            </div>
-    <div id="conteneur-actions"></div>
-    
-    
-    <!-- <script src="../script/qui_joue.js"></script> -->
-    <!-- <script src="js/test.js"></script> -->
 </body>
 </html>

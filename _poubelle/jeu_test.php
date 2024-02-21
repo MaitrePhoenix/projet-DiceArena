@@ -92,6 +92,12 @@ cre
                     <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
                 </div>
 
+                
+                <?php   
+            	if (isset($_GET['erreur']) && $_GET['erreur'] == 1) {
+                	echo '<p style="color: red;"><mark>'. $erreurMessIdent .'</mark></p>';
+            	}
+        	?>
 
     </div>
 </body>

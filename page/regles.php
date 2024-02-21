@@ -19,6 +19,18 @@
     <title>Jeu</title>
 </head>
 <body>
+
+    <nav class="navbar navbar-expand-md navbar-light" 
+         style="background-color: maroon;">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link text-light 
+                        font-weight-bold text-uppercase px-3" 
+                   href= 'accueil.php'>Accueil</a>
+            </li>
+        </ul>
+    </nav>
+    
     <div class="container">
         <h1><center>Voici les règles de DiceArena !</center></h1>
         <div>
@@ -57,29 +69,7 @@
             </li>
         </ul>
 
-                <!-- Pour le debug -->
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil.php';" value="Accueil" />
-                </div>
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/accueil_test.php';" value="Accueil_test" />
-                </div>
-
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/jeu.php';" value="Jeu" />
-                </div>
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/jeu_test.php';" value="Jeu_test" />
-                </div>
-
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projet-DiceArena/page/connexion.php';" value="Connexion" />
-                </div>
-                <div>
-                    <input type="button" onclick="window.location.href = 'http://localhost/projetdee/projet-DiceArena/page/debugSession.php';" value="DebugSession" />
-                </div>
-
-
     </div>
 </body>
+
 </html>

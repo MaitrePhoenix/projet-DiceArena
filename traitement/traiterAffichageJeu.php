@@ -33,9 +33,6 @@ function affichageBoutons($plateau){
     if(getVainqueur() == 0 && shouldIPlay($userId)){
         echo("<tr>");
         for($i = 1; $i <= count($plateau[1]); $i++){
-            //echo("<th style=\"padding: 8px; text-align: left;\"> <div style=\"min-height: 30px;text-align:center;\">". 'bouton'. "</div></td>");
-            // V1 - echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"><button type="button" class="btn btn-warning" onclick="actionDeJeu('.$i.')">Inserer colonne '.$num.'</button></div></td>');}
-            //value="'.$i.'"
             echo('<th style="padding: 8px; text-align: left;"> <div style="min-height: 30px;text-align:center;"> <form id="placement-form" action="../traitement/traiterPlacement.php" method="post"><input type="hidden" name="actionInsertion" value="'.$i.','.$idGame.'"><button type="submit" id="btnInsert" class="btn btn-warning">Inserer colonne '.$i.'</button></form> </div></td>');
         }
         echo("</tr>");

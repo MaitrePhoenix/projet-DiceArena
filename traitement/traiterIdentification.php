@@ -4,29 +4,7 @@
     
     //include ('../script/scriptAccesBdd.php');
     require_once "../includes/inc_connexionBase.php";
-    //----------------------------------------
-    // Un peu de tracage des valeurs recues
-    //----------------------------------------
 
-    echo '$_REQUEST : ';
-    var_dump($_REQUEST);
-    echo "<br>";
-
-    echo '$_SERVER[\"REQUEST_METHOD\"] : ';
-    var_dump($_SERVER['REQUEST_METHOD']);
-    echo "<br>";
-
-    echo '$_GET : ';
-    var_dump($_GET);
-    echo "<br>";
-
-    echo '$_POST : ';
-    var_dump($_POST);
-    echo "<br>";
-
-    //exit() //Pour voir vraiment ce qui est donner à mon formulaire, 
-            // aide a donner les parametre à mes variables que je créer ici 
-            //en gros on voit toutes les var partager
 
     // Récupérer les données du formulaire
     // Pas reçues, ou "vide" : on sort
@@ -64,77 +42,39 @@
 
     $tabRes = $requete->fetchAll(PDO::FETCH_ASSOC);
     
-
     //$tabRes = getJoueurForConnexion($pseudo, $mdp);
     
     //Partie debug
     var_dump($tabRes);
     //exit();
 
-    // getJoueurForConnexion($pseudo)
-
-
-
-
+    //Si on ne retourne pas une ligne -> il y a un soucis
     if (count($tabRes)!=1) {
         // redirection
         header("location: ../page/connexion.php");
         die("erreur : login non trouvé ");
     }
 
-    //Si on ne retourne pas une ligne -> il y a un soucis
-    // if(count($tabRes)!=1){
-    //     $_SESSION["pseudo"] = "";
-    //     // $_SESSION["droits"] = "";
-    //     header("location:connexion.php?erreur=2");//Modifier avec droits non existants
-    //     exit();
-    // }
-
-
     // Si on arrive là : l'utilisateur existe
-
-    // if (password_verify($pass,$tabRes[0]["mdp"])==false){
-    //     // redirection
-    //     header("location:connexion.php");
-    //     die("erreur : mdp non correct");        
-    // }
-
-    // Si on arrive là : login/pass OK
-
-    // Si login/pass existent :
-
     $passHash = $tabRes[0]["mdp"];
     
-    var_dump($passHash);
-    var_dump($mdp);
+    //var_dump($passHash);
+    //var_dump($mdp);
     
     //Est ce que le pass est correct ?
     if(password_verify($mdp,$passHash)==false){
         //header("location: ../page/connexion.php?erreur=1");
-        die("Erreur LLLL");
+        header("location: ../page/connexion.php?erreur=1");
     }else{
+        // Si on arrive là : login/pass OK
+        // // Si login/pass existent : Redirection
         header("location: ../page/accueil.php");
     }
 
     //Placer en session : le login
     $_SESSION["pseudo"] = $pseudo;
     $_SESSION['userId'] = $tabRes[0]['id'];
-    //$_SESSION["id"] = $id;
-
-    // if (empty($pseudo) || empty($mdp)){
-	// // Pas re�ues, ou "vide" : on sort
-    // //if (empty($login) || empty($pass)){
-    //     header("location:connexion.php?erreur=1");
-    //     exit(); // header ne provoque pas l'arret du script
-    // //}
-    // }
-    // else 
-    // {
-    //     header("location:accueil.php");//?nom=mael
-    //     //exit(); // header ne provoque pas l'arret du script
-    // }
-    
-
-    // si pas connu : rediriger sur la page de co (connexion.php)
+   
+    // si pas connu : rediriger sur la page de co (acceuil.php) avec l'erreur
     
     //header("location: ../page/connexion.php?erreur=1");

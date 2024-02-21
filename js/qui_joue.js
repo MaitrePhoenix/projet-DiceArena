@@ -1,9 +1,11 @@
- function tt(){
-	// Appel ShouldIplay
- }
+async function run(){
+    let user = await verifierJoueur();
+    console.log("Apres await",user);
+    console.log(reponse);
+}
 
-
- // Fonction pour vérifier si c'est à un joueur de jouer
+run();
+// Fonction pour vérifier si c'est à un joueur de jouer
 function verifierJoueur() {
     // Effectuer une requête AJAX
     var xhr = new XMLHttpRequest();
@@ -14,15 +16,11 @@ function verifierJoueur() {
                 var reponse = xhr.responseText;
                 // Analyser la réponse du serveur
                 if (reponse === "true") {
-                    // Le joueur peut jouer, effectuer les actions nécessaires	
-					// Le joueur doit jouer, activer les actions nécessaires
-					// Par exemple, activer les boutons pour jouer
-                    activerActions();
+                    console.log(reponse," : c'est a vous");
+                    alert("C'est a vous - recharger la page");  
                 } else {
-                    // Le joueur ne peut pas jouer, désactiver les actions nécessaires            
-					// Le joueur ne doit pas jouer, désactiver les actions nécessaires
-                    // Par exemple, désactiver les boutons pour jouer
-					desactiverActions();
+                    console.log(reponse," : veuilliez attendre");
+                    alert("Veuilliez attendre avant de recharger la page");
                 }
             } else {
                 // Gérer les erreurs de la requête
@@ -32,10 +30,23 @@ function verifierJoueur() {
     };
 
     // Envoyer la requête au serveur
-    xhr.open('GET', '../script/qui_joue.php', true);
+    xhr.open('GET', '../traitement/qui_joue.php', true);
     xhr.send();
 }
 
+// Sélectionner le bouton "Prendre la main"
+var boutonPrendreLaMain = document.getElementById("btnDemande");
+
+// Ajouter un écouteur d'événements pour le clic sur le bouton "Prendre la main"
+boutonPrendreLaMain.addEventListener("click", prendreLaMain);
+
+
+function prendreLaMain() {
+    // Appeler la fonction pour vérifier si le joueur doit jouer
+    verifierJoueur();
+}
+
+// -------------------------------------------------------------------- // 
 // Fonction pour activer les actions du joueur
 function activerActions() {
     // Activer les actions nécessaires pour que le joueur puisse jouer
@@ -100,20 +111,9 @@ function desactiverActions() {
 
 }
 
-
-// Sélectionner le bouton "Prendre la main"
-var boutonPrendreLaMain = document.getElementById("btnTakeOver");
-
-// Ajouter un écouteur d'événements pour le clic sur le bouton "Prendre la main"
-boutonPrendreLaMain.addEventListener("click", prendreLaMain);
-
-
-function prendreLaMain() {
-    // Appeler la fonction pour vérifier si le joueur doit jouer
-    verifierJoueur();
-}
-
 // Appeler la fonction pour vérifier le joueur lors du chargement de la page
 // window.onload = function() {
 //     verifierJoueur();
 // };	
+
+// -------------------------------------------------------------------- //

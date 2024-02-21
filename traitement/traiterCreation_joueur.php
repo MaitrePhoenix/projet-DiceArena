@@ -1,11 +1,6 @@
 <?php
     session_start();
-//On souhaite gérer toute les actions lors de la création
-// - Creation du player
-// - ajout en base avec le pseudo de la personne ainsi que l'ID
-// - rafraichir la page avec le code generer
-
-// A ajouter au fur et à mesure
+    // A ajouter au fur et à mesure
 
     require_once "../script/scriptAccesBdd.php";
     
@@ -49,47 +44,4 @@
     
     header("location: ../page/connexion.php");
 
-
-    // $result = getJoueurForConnexion($pseudo, $mdp);
-    // var_dump($result);
-    
-    //pour se connecter
-    // $mdp_hash = password_hash($mdp,PASSWORD_DEFAULT);
-    // $requete = $connexion->prepare("Select * from joueur where pseudo = :pseudo and mdp = :mdp");
-    // $requete->bindParam(':pseudo', $pseudo);
-    // $requete->bindParam(':mdp', $mdp_hash);
-    // $requete->execute();
-    // $result = $requete->fetch(PDO::FETCH_ASSOC);
-    // var_dump($requete);
-    // var_dump($result);
-    //exit();
-
-    // //header("location: ../page/accueil.php");
-    
-    //$_SESSION['userId'] = $idUtilisateur;
-    // $_SESSION['userId'] = $result[0]['id'];
-
-
-    //var_dump($_SESSION);
-    //exit();
-
-    //----------------------------------------
-    
-    // if(isset($_POST['action']) && !empty($_POST['action'])) {
-    //     // Exécute la fonction appropriée selon la valeur de l'action
-    //     if($_POST['action'] == 'maFonction') {
-    //         maFonction();
-    //     }
-    // }
-
-    // function creerEtDirigerVersPartie(){
-    //     $idUtilisateur = $_SESSION["idUser"];
-
-    //     $idPartie = creerPartie($idUtilisateur);
-
-    //     //ajouter la redirection automatique
-    // }
-
-
-    
 ?>

@@ -5,11 +5,9 @@
     include_once('../traitement/traiterJeu.php');
     include_once "../traitement/traiterAffichageJeu.php";
 
-    //$action = (int) $_REQUEST['actionInsertion'];
-
     if(isset($_POST['actionInsertion']) && !empty($_POST['actionInsertion'])) {
         
-        // Récupérer la valeur de $_POST['actionInsertion']
+        // Récupérer la valeur du bouton associé au input qui pour name actionInsertion
         $valeur = $_POST['actionInsertion'];
 
         // Vérifier si la valeur contient une virgule
@@ -25,16 +23,11 @@
             // echo "Première partie : " . $valueColumn . "<br>";
             // echo "Deuxième partie : " . $codePartie . "<br>";
         }
-        //exit();
-        //$valueColumn = (int) $_POST['actionInsertion'];
-        //var_dump($_SESSION);  
-        //exit();
+
         actionDeJeu($valueColumn,$codePartie);
 
-    } else{
-        //var_dump($action);
-        //header("location: ../page/jeu.php");
-        
+        //redirection automatique vers la page de jeu
+        header("location: ../page/jeu.php");
     }
 
     
