@@ -77,12 +77,6 @@ $idUser = $_SESSION['userId'];
             if(shouldIPlay($idUser)) {  ?>
                 <div>
                     <label for="inCreator">C'est à votre tour </label>
-                    <br>
-                    <label>Dès à placer :
-                        <?php
-                        echo(getPartieByCode($codePartie)["currentDice"]);
-                        ?>
-                    </label>
                 </div>
                 
                 <?php } 
@@ -90,12 +84,18 @@ $idUser = $_SESSION['userId'];
 
                 <div>
                     <label for="inDemande">C'est au tour de votre adversaire : </label>
-                    <!-- <input class="form-control" id="inJoiner" name="Joiner" type="text" placeholder="champ de saisi J2"> -->
-                    <button class="btn btn-warning" type="submit" id="btnDemande" onmethod="post">A-t-il fini?</button>
-                    <script src="../js/qui_joue.js"></script>
+                    <a href="jeu.php">
+                        <button class="btn btn-warning">A-t-il fini?</button>
+                    </a>
                 </div>
             <?php } 
         } ?>
+        <br>
+        <label>Dès à placer :
+            <?php
+            echo(getPartieByCode($codePartie)["currentDice"]);
+            ?>
+        </label>
         
         <div style="margin-top: 10px;">
             
