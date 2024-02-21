@@ -46,7 +46,7 @@ function poserDes($numColonne1,$codePartie){
             for ($j = $i; $j < 3; $j++){
                 $plateauAdversaire[$numColonne][$j] = $plateauAdversaire[$numColonne][$j+1];
             }
-            $plateauAdversaire[$numColonne][$i] = 0;
+            $plateauAdversaire[$numColonne][$j-1] = 0;
             $i--;
         }
     }
@@ -65,12 +65,10 @@ function poserDes($numColonne1,$codePartie){
     $partie["plateauJ1"] = $partie["tourJoueur"] == 1 ? $plateauPrincipal : $plateauAdversaire;
     $partie["plateauJ2"] = $partie["tourJoueur"] == 1 ? $plateauAdversaire : $plateauPrincipal;
 
-    changerTour($codePartie);
+    changerTour($partie);
 }
 
-function changerTour($codePartie){
-    //$codePartie = $_SESSION["idGame"];
-    $partie = getPartieByCode($codePartie);
+function changerTour($partie){
     $partie["currentDice"] = rand(1,6);
     $partie["tourJoueur"] = $partie["tourJoueur"] == 1 ? 2 : 1;
     updatePartieViaItem($partie);

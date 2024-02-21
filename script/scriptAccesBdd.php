@@ -119,5 +119,10 @@ function getPlateauOfPlayerOrOpponent($joueur){
 }
 
 function updatePartieViaItem($partie){
-    updatePartie($partie["code"], json_decode($partie["plateauJ1"]), json_decode($partie["plateauJ2"]), $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
+    if(is_string($partie["plateauJ1"])){
+        updatePartie($partie["code"], json_decode($partie["plateauJ1"]), json_decode($partie["plateauJ2"]), $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
+    }
+    else{
+        updatePartie($partie["code"], $partie["plateauJ1"], $partie["plateauJ2"], $partie["tourJoueur"], $partie["currentDice"], $partie["joueur2"]);
+    }
 }
