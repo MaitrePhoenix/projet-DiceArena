@@ -25,27 +25,28 @@ function creerPartie($joueur1){
 
 
 //fonction appelé lorsqu'un joueur pose un dé, l'ajoute sur son plateau et enlève les dés adverses
-function poserDes($numColonne,$codePartie){
+function poserDes($numColonne1,$codePartie){
     //$codePartie = $_SESSION["idGame"];
     $partie = getPartieByCode($codePartie);
     $de = $partie["currentDice"];
+    $numColonne = $numColonne1-1;
 
     $plateauPrincipal = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ1"] : $partie["plateauJ2"]);
     $plateauAdversaire = json_decode($partie["tourJoueur"] == 1 ? $partie["plateauJ2"] : $partie["plateauJ1"]);
 
-    for($i = 0; $i < 3; $i++){
+    for($i = 1; $i <= 3; $i++){
         if($plateauPrincipal[$numColonne][$i] == 0){
             $plateauPrincipal[$numColonne][$i] = $de;
             break;
         }
     }
 
-    for($i = 0; $i < 3; $i++){
+    for($i = 1; $i <= 3; $i++){
         if($plateauAdversaire[$numColonne][$i] == $de){
             for ($j = $i; $j < 2; $j++){
                 $plateauAdversaire[$numColonne][$j] = $plateauAdversaire[$numColonne][$j+1];
             }
-            $plateauAdversaire[$numColonne][2] = 0;
+            $plateauAdversaire[$numColonne][$i] = 0;
             $i--;
         }
     }

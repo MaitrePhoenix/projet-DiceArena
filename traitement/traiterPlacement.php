@@ -41,7 +41,7 @@
     function actionDeJeu ($valueColumn,$codePartie){
         poserDes($valueColumn,$codePartie);
         //redirection automatique vers la page de jeu
-        header("location: ../page/jeu.php");
+        //header("location: ../page/jeu.php");
     }
 
 ?>
