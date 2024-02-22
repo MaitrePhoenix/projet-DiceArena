@@ -60,7 +60,7 @@
             <!-- Bouton pour rejoindre une partie existante -->
             <form action="../traitement/traiterJoin.php" method="post" style="display: flex;">
                 <button class="btn btn-warning" type="submit" id="btnJoin" style="margin-right:3px;">Rejoindre</button>
-                <input class="form-control input-accueil" id="inCode" name="code" type="number" placeholder="Saisir le code" style="width: 150px;">
+                <input class="form-control input-accueil" id="inCode" name="code" type="number" placeholder="Saisir le code" style="width: 175px;">
             </form>
 
         </div>
@@ -71,16 +71,15 @@
                     border-radius: 8px;
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">Veuilliez vous connectez pour acceder aux fonctionnalités du site.</div>';
         } ?>
-        <div class="center_container" style="background-color: #fff;
+        <!--<div class="center_container" style="background-color: #fff;
                                     padding: 30px;
                                     border-radius: 8px;
                                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                                     margin-top: 20px;">
+*
+            <button class="btn btn-success" onclick="window.location.href = 'regles.php';" >Règles du jeu</button> 
 
-            <!-- Bouton pour accéder à la page des règles -->
-            <button class="btn btn-success" onclick="window.location.href = 'regles.php';" >Règles du jeu</button>
-
-        </div>
+        </div>-->
     </div>
 
 </body>
